@@ -40,7 +40,8 @@
 }
 
 .inputSearch {
-    /* padding: 16px 20px; */
+    padding: 5px;
     display: inline-flex;
+    font-size: 1.5rem;
     border: 6px lightgreen solid;
 }

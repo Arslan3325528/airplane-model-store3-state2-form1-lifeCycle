@@ -41,6 +41,7 @@ export class App extends Component {
     // selectedModels: [], //! масив обраних моделей
     isCartButton: false, //! тригер: "якщо активна кнопка «Кошик»"
     // totalTypes: aircrafts.length, //! кількість типів ЛА (всіх літальних апаратів)
+    inputSearchValue: "", //! значення inputSearch
   };
 
   //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
@@ -158,7 +159,7 @@ export class App extends Component {
       isCartButton: true, //! тригер: "якщо активна кнопка «Кошик»" 
     });
   };
-
+  //! Обробка кліка на кнопці <Додати до кошику>
   getActiveId = id => {
     console.log('🆔Індекс обраної моделі ("id"):', id); //!
     this.setState(prevState => {
@@ -178,6 +179,17 @@ export class App extends Component {
     });
   };
 
+  //! Обробка введених даних для пошуку(фільтрації) карток за ім'ям або іншими параметрами
+  handleChangeInputSearchValue = event => { 
+    const onlyInputSearchValue = aircrafts.filter(
+      aircraft => aircraft.name.brief.toLowerCase().startsWith(event.target.value.trim().toLowerCase())
+    );
+    this.setState({
+      inputSearchValue: event.target.value,
+      aircraftsArr: onlyInputSearchValue,
+    });
+  };
+
 
   render() {
     const {
@@ -187,7 +199,9 @@ export class App extends Component {
       indicesSelectedModels, //! масив індексів обраних моделей
       // selectedModels //! масив обраних моделей 
       isCartButton, //! тригер: "якщо активна кнопка «Кошик»"
-      // totalTypes //! кількість типів ЛА 
+      // totalTypes //! кількість типів ЛА
+      inputSearchValue, //! значення inputSearch
+
     } = this.state;
 
     //! Рахуємо кількість типів ЛА
@@ -201,8 +215,12 @@ export class App extends Component {
     //! Формуємо(оновлюємо) масив обраних моделей [selectedModels]
     // const selectedModels = indicesSelectedModels.flatMap(id => aircrafts.filter((el) => id === el.id));
     // const selectedModels = this.updateSelectedModels();
-    const selectedModels = updateSelectedModels(indicesSelectedModels, aircrafts); //! якщо імпортуємо
-    
+    const selectedModelsBeforeSorting = updateSelectedModels(indicesSelectedModels, aircrafts); //! якщо імпортуємо - це до сортування
+    //! Після сортування
+    const selectedModels = selectedModelsBeforeSorting.filter(
+      aircraft => aircraft.name.brief.toLowerCase().startsWith(inputSearchValue.trim().toLowerCase())
+    );
+
     //! Рахуємо кількість обраних моделей
     const numberOfModels = indicesSelectedModels.length; 
 
@@ -210,6 +228,7 @@ export class App extends Component {
     console.log("ℹ️Mасив індексів обраних моделей :", indicesSelectedModels);
     console.log("Ⓜ️Масив обраних моделей:", selectedModels);
     console.log("🔢Кількість обраних моделей:", numberOfModels);
+    console.log("🔡Значення inputSearch:", inputSearchValue);
     console.log("______________________________________________");
 
     return (
@@ -227,7 +246,11 @@ export class App extends Component {
 
         {/*//!  Sorter */}
         <Sorter
-          // items={isCartButton ? selectedModels : aircraftsArr}
+          inputSearchValue={inputSearchValue} //! значення inputSearch
+          onHandleChangeInputSearchValue={this.handleChangeInputSearchValue}
+          isCartOn={isCartButton} //! тригер: "якщо активна кнопка «Кошик»"
+          numberOfSelectedModels={numberOfModels} //! кількість обраних моделей
+          
         />
 
         {/*//! ВСІ */}
@@ -248,6 +271,7 @@ export class App extends Component {
             items={isCartButton ? selectedModels : aircraftsArr} 
             indicesArray={indicesSelectedModels}
             onActiveId={this.getActiveId}
+            inputSearchValue={inputSearchValue} //! значення inputSearch
           />
         </Section >
       </>

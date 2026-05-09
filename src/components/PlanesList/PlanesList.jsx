@@ -5,7 +5,13 @@ import { Planes } from '@/components/Planes/Planes.jsx'; //? Модальні в
 import { getBgColorCSSModule } from '@/utils'; 
 
 
-export function PlanesList({ items, indicesArray, onActiveId }) {
+export function PlanesList({
+    items,
+    indicesArray,
+    onActiveId,
+    inputSearchValue //! значення inputSearch
+})
+{
     return (
         <>
             {items.length
@@ -39,7 +45,9 @@ export function PlanesList({ items, indicesArray, onActiveId }) {
                         </li>
                     )}
                 </ul>
-                : <h2 className={css.invitation}>Додайте товар до кошику...</h2>
+                : (inputSearchValue)
+                    ? <h2 className={css.invitation}>Нічого не знайдено... ☹️</h2> 
+                    : <h2 className={css.invitation}>Додайте товар до кошику... 😉</h2>
             }
         </>
     );

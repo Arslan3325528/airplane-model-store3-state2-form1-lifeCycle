@@ -5,28 +5,37 @@ import css from "./Sorter.module.css";
 //? Підняття стану
 //! Звичайний компонент
 export function Sorter({
-  // onAll,
-  // onPlanes,
-  // onBiplanes,
-  // onHelicopters,
-  // onCart,
-  // filterButton, //! візуалізація активної кнопки
-  // numberOfSelectedModels //! кількість обраних моделей
+  inputSearchValue, //! початкове значення inputSearch
+  onHandleChangeInputSearchValue,
+  isCartOn, //! тригер: "якщо активна кнопка «Кошик»"
+  numberOfSelectedModels, //! кількість обраних моделей
 })
 {
+  // console.log("(!isCartButton):", !isCartOn);
+  // console.log("(isCartButton):", isCartOn);
+  // console.log("numberOfSelectedModels:", !!numberOfSelectedModels);
+  // console.log("(!isCartButton || numberOfSelectedModels):", (!isCartOn || numberOfSelectedModels));
   return (
-    <div className={css.searchBox}>
-      <input
-        className={css.inputSearch}
-        type="text"
-      />
-      <button
-        className={css.buttonSearch}
-        type="button"
-        // onClick={onAll}
-      >
-        Пошук
-      </button>
-    </div>
+    <>
+      {(!isCartOn || numberOfSelectedModels) &&
+        <div className={css.searchBox}>
+          <input
+            className={css.inputSearch}
+            type="text"
+            defaultValue={inputSearchValue} //! початкове значення inputSearch
+            // onChange={() => console.log("input")}
+            // onChange={(event) => console.log(event.target.value)}
+            onChange={onHandleChangeInputSearchValue}
+          />
+          {/* <button
+            className={css.buttonSearch}
+            type="button"
+            onClick={() => console.log('Клік в "Пошук"')}
+          >
+            Пошук
+          </button> */}
+        </div>
+      }
+    </>
   )
 };

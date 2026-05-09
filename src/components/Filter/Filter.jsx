@@ -20,8 +20,8 @@ export function Filter({
         // className={css.buttonAllFiltration}
         className={
           filterButton === "allButton"
-            ? `${css.buttonAllFiltration} 
-            ${css.active}` : css.buttonAllFiltration
+            ? `${css.buttonAllFiltration} ${css.active}`
+            : css.buttonAllFiltration
         }
         type="button"
         onClick={onAll}
@@ -33,8 +33,7 @@ export function Filter({
         // className={css.buttonPlaneFiltration}
         className={
           filterButton === "planeButton"
-            ? `${css.buttonPlaneFiltration} 
-            ${css.active}`
+            ? `${css.buttonPlaneFiltration} ${css.active}`
             : css.buttonPlaneFiltration
         }
         type="button"
@@ -47,8 +46,8 @@ export function Filter({
         // className={css.buttonBiplaneFiltration}
         className={
           filterButton === "biplaneButton"
-            ? `${css.buttonBiplaneFiltration} 
-            ${css.active}` : css.buttonBiplaneFiltration
+            ? `${css.buttonBiplaneFiltration} ${css.active}`
+            : css.buttonBiplaneFiltration
         }
         type="button"
         onClick={onBiplanes}
@@ -60,8 +59,8 @@ export function Filter({
         // className={css.buttonHelicopterFiltration}
         className={
           filterButton === "helicopterButton"
-            ? `${css.buttonHelicopterFiltration} 
-            ${css.active}` : css.buttonHelicopterFiltration
+            ? `${css.buttonHelicopterFiltration} ${css.active}`
+            : css.buttonHelicopterFiltration
         }
         type="button"
         onClick={onHelicopters}
@@ -72,8 +71,8 @@ export function Filter({
       <button
         className={
           filterButton === "cartButton"
-            ? `${css.buttonCartFiltration} 
-            ${css.active}` : css.buttonCartFiltration
+            ? `${css.buttonCartFiltration} ${css.active}`
+            : css.buttonCartFiltration
         }
         type="button"
         onClick={onCart}
@@ -84,8 +83,7 @@ export function Filter({
           //! Зміна кольору фону, якщо кошик не пустий
           className={
             numberOfSelectedModels
-              ? `${css.quantityInCart} 
-              ${css.notEmpty}`
+              ? `${css.quantityInCart} ${css.notEmpty}`
               : css.quantityInCart
           }
         >
