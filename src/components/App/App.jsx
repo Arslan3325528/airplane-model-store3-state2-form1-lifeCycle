@@ -201,36 +201,57 @@ export class App extends Component {
     const onlyInputSearchValue = this.state.aircraftsArrAfterFiltration.filter(
       aircraft => aircraft.name.brief.toLowerCase().startsWith(event.target.value.trim().toLowerCase())
     );
-    this.setState({
-      inputSearchValue: event.target.value,
-      aircraftsArr: onlyInputSearchValue,
-    });
+
+    // this.setState({
+    //   inputSearchValue: event.target.value,
+    //   aircraftsArr: onlyInputSearchValue,
+    // });
+
+    switch (this.state.radioButtonValue) {
+      case "brief":
+        this.setState({
+          inputSearchValue: event.target.value,
+          aircraftsArr: onlyInputSearchValue,
+        });
+        break;
+      // case "nickname":
+      //   inputSearchPlaceholder = "Введіть прізвисько ЛА";
+      //   break;
+      // case "country":
+      //   inputSearchPlaceholder = "Введіть країну виробник ЛА";
+      //   break;
+      // case "year":
+      //   inputSearchPlaceholder = "Введіть рік випуску ЛА";
+      //   break;
+      default:
+        fieldValue = "";
+    };
+
+    
   };
 
   //! Обробка введених даних: значення параметра для пошуку/фільтрації радіо-кнопки
   handleChangeRadioButtonValue = (event) => {
     const radioButtonValue = event.target.value;
     let inputSearchPlaceholder = "";
+
     switch (radioButtonValue) {
       case "brief":
         inputSearchPlaceholder = "Введіть назву ЛА";
         break;
-
       case "nickname":
         inputSearchPlaceholder = "Введіть прізвисько ЛА";
         break;
-
       case "country":
         inputSearchPlaceholder = "Введіть країну виробник ЛА";
         break;
-
       case "year":
         inputSearchPlaceholder = "Введіть рік випуску ЛА";
         break;
-
       default:
-        fieldValue = "";
-    }
+        inputSearchPlaceholder = "";
+    };
+
     this.setState({
       radioButtonValue,
       inputSearchPlaceholder
