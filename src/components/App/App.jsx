@@ -44,6 +44,8 @@ export class App extends Component {
     inputSearchValue: "", //! значення inputSearch
     aircraftsArrAfterFiltration: aircrafts,  //! дубльоване значення aircraftsArr після фільтрації
     radioButtonValue: "brief", //! значення параметра для пошуку/фільтрації радіо-кнопки
+    inputSearchPlaceholder: "Введіть назву ЛА", //! значення placeholder для inputSearch
+
   };
 
   //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
@@ -200,8 +202,31 @@ export class App extends Component {
 
   //! Обробка введених даних: значення параметра для пошуку/фільтрації радіо-кнопки
   handleChangeRadioButtonValue = (event) => {
+    const radioButtonValue = event.target.value;
+    let inputSearchPlaceholder = "";
+    switch (radioButtonValue) {
+      case "brief":
+        inputSearchPlaceholder = "Введіть назву ЛА";
+        break;
+
+      case "nickname":
+        inputSearchPlaceholder = "Введіть прізвисько ЛА";
+        break;
+
+      case "country":
+        inputSearchPlaceholder = "Введіть країну виробник ЛА";
+        break;
+
+      case "year":
+        inputSearchPlaceholder = "Введіть рік випуску ЛА";
+        break;
+
+      default:
+        fieldValue = "";
+    }
     this.setState({
-      radioButtonValue: event.target.value,
+      radioButtonValue,
+      inputSearchPlaceholder
     });
   };
 
@@ -218,6 +243,7 @@ export class App extends Component {
       inputSearchValue, //! значення inputSearch
       aircraftsArrAfterFiltration,  //! дубльоване значення aircraftsArr після фільтрації
       radioButtonValue, //! значення параметра для пошуку/фільтрації радіо - кнопки
+      inputSearchPlaceholder, //! значення placeholder для inputSearch
     } = this.state;
 
     //! Рахуємо кількість типів ЛА
@@ -250,7 +276,8 @@ export class App extends Component {
     console.log("🔢Кількість обраних моделей:", numberOfModels);
     console.log("🔡Значення inputSearch:", inputSearchValue);
     console.log("Ⓜ️Ⓜ️Дубльоване значення aircraftsArr після фільтрації:", aircraftsArrAfterFiltration);
-    console.log("⭕️значення параметра для пошуку/фільтрації радіо-кнопки:", radioButtonValue);
+    console.log("⭕️Значення параметра для пошуку/фільтрації радіо-кнопки:", radioButtonValue);
+    console.log("🔲Значення placeholder для inputSearch:", inputSearchPlaceholder);
     console.log("______________________________________________");
 
     return (
@@ -274,6 +301,7 @@ export class App extends Component {
           numberOfSelectedModels={numberOfModels} //! кількість обраних моделей
           onHandleChangeRadioButtonValue={this.handleChangeRadioButtonValue}
           radioButtonValue={radioButtonValue} //! значення параметра для пошуку/фільтрації радіо-кнопки
+          inputSearchPlaceholder={inputSearchPlaceholder} //! значення placeholder для inputSearch
         />
 
         {/*//! ВСІ */}

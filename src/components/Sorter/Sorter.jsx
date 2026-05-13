@@ -11,6 +11,7 @@ export function Sorter({
   numberOfSelectedModels, //! кількість обраних моделей
   onHandleChangeRadioButtonValue,
   radioButtonValue,  //! значення параметра для пошуку/фільтрації радіо-кнопки
+  inputSearchPlaceholder, //! значення placeholder для inputSearch
 })
 {
   // console.log("(!isCartButton):", !isCartOn);
@@ -21,9 +22,8 @@ export function Sorter({
     <>
       {(!isCartOn || numberOfSelectedModels) &&
         <div className={css.searchBox}>
-          <form>
-            <h3>Вибір параметра для пошуку/фільтрації:</h3>
-
+          <h3>Вибір параметра для пошуку/фільтрації:</h3>
+          <form className={css.formRadioButton}>
             <label>
               <input
                 type="radio"
@@ -68,13 +68,14 @@ export function Sorter({
               Рік випуску
             </label>
 
-            <p>Ваш вібір: {radioButtonValue}</p>
+            {/* <p>Ваш вібір: {radioButtonValue}</p> */}
           </form>
 
           <input
             className={css.inputSearch}
             type="text"
-            placeholder=" Введіть назву ЛА"
+            // placeholder=" Введіть назву ЛА"
+            placeholder={inputSearchPlaceholder}
             defaultValue={inputSearchValue} //! початкове значення inputSearch
             // onChange={() => console.log("input")}
             // onChange={(event) => console.log(event.target.value)}
