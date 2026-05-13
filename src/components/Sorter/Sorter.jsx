@@ -76,7 +76,8 @@ export function Sorter({
             type="text"
             // placeholder=" Введіть назву ЛА"
             placeholder={inputSearchPlaceholder}
-            defaultValue={inputSearchValue} //! початкове значення inputSearch
+            // defaultValue={inputSearchValue} //! початкове значення inputSearch
+            value={inputSearchValue} //! початкове значення inputSearch
             // onChange={() => console.log("input")}
             // onChange={(event) => console.log(event.target.value)}
             onChange={onHandleChangeInputSearchValue}
