@@ -204,12 +204,13 @@ export class App extends Component {
         console.log("Такого індекса моделі ще немає,тоді ДОДАЄМО його!✅");
       };
       return {
+        inputSearchValue: "",
         indicesSelectedModels:
           exists
             ? this.state.indicesSelectedModels.filter(item => item !== id)
           // : [...prevState.indicesSelectedModels, id] //! без сортування
             : [...this.state.indicesSelectedModels, id].sort((a, b) => a - b), //! сортування за id
-        // selectedModels: updateSelectedModels(prevState.indicesSelectedModels, aircrafts) //!❌ так НЕ додає останній елемент
+        // selectedModels: updateSelectedModels(prevState.indicesSelectedModels, aircrafts), //!❌ так НЕ додає останній елемент
       };
     });
     this.updateSelectedModels(); //*✅ так додає останній елемент
@@ -225,25 +226,27 @@ export class App extends Component {
     //   inputSearchValue: event.target.value,
     //   aircraftsArr: onlyInputSearchValue,
     // });
-    const array =
+    const prevArray =
       this.state.isCartButton
         ? this.state.indicesSelectedModels.flatMap(id => aircrafts.filter((el) => id === el.id))
+          .sort((a, b) => a.name.brief.localeCompare(b.name.brief)) //! з сортуванням за полем "name.brief"
+        // ? this.state.selectedModels
         : this.state.aircraftsArrAfterFiltration
 
-    const inputSearchValueBrief = array.filter(
+    const inputSearchValueBrief = prevArray.filter(
       aircraft => aircraft.name.brief.toLowerCase().startsWith(event.target.value.trim().toLowerCase())
     );
-    const inputSearchValueNickname = array.filter(
+    const inputSearchValueNickname = prevArray.filter(
       aircraft => aircraft.name.nickname.toLowerCase().includes(event.target.value.trim().toLowerCase())
     );
-    const inputSearchValueCountry = array.filter(
+    const inputSearchValueCountry = prevArray.filter(
       aircraft => aircraft.info.country.toLowerCase().startsWith(event.target.value.trim().toLowerCase())
     );
-    const inputSearchValueYear = array.filter(
+    const inputSearchValueYear = prevArray.filter(
       aircraft => String(aircraft.info.year).startsWith((event.target.value.trim()))
     );
 
-    console.log("⏰⏰⏰inputSearchValueYear:", inputSearchValueYear);
+    // console.log("⏰⏰⏰inputSearchValueYear:", inputSearchValueYear);
 
     switch (this.state.radioButtonValue) {
       case "brief":
@@ -286,6 +289,9 @@ export class App extends Component {
     this.setState({
       inputSearchValue: "",
       aircraftsArr: this.state.aircraftsArrAfterFiltration,
+      selectedModels:
+        this.state.indicesSelectedModels.flatMap(id => aircrafts.filter((el) => id === el.id))
+        .sort((a, b) => a.name.brief.localeCompare(b.name.brief)) //! з сортуванням за полем "name.brief",
     });
 
     const radioButtonValue = event.target.value;
