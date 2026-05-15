@@ -32,6 +32,7 @@ export function Planes({
   type,
   price = "немає інформації",
   description,
+  modelColorsPrice,
   modelActualImages = [template],
   modelActualFullImages = [],
   manufacturingStart,
@@ -40,10 +41,16 @@ export function Planes({
   onActiveId
 })
 {
+  //! Рахуємо кількість моделей <numberModels> виходячи з наявності фактичної ціни
+  const numberModels = Object.values(modelColorsPrice).filter(el => Number(el)).length;
+  // console.log("📌📌📌numberModels :", numberModels);
   return (
     <>
       {/* <h3 className={css.planeTitle}>{nameBrief}</h3> */}
-      <h3 className={css[getAircraftTitleBgColor(aircraftType)]}>{nameBrief}</h3>
+      <h3 className={css[getAircraftTitleBgColor(aircraftType)]}>
+        {nameBrief}
+        {numberModels > 1 && <span className={css.baseTitleNumberModels}>{numberModels}</span>}
+      </h3>
       <a href={wikipediaPage} target="_blank" rel="noreferrer noopener"><img src={urlMain} alt={nameBrief} /></a>
       <p className={css.textField}><FcTrademark size={iconSize.md} className={css.icon} /> Повна назва: <span className={css.boldStyle} >{nameFull}</span></p>
       <p className={css.textField}><GiCommercialAirplane size={iconSize.md} className={css.icon} /> Тип: <span className={css.textFieldValue}>{type}</span></p>

@@ -35,6 +35,7 @@ export function PlanesList({
                                 type={item.info.type}
                                 price={item.info.price}
                                 description={item.info.description}
+                                modelColorsPrice={item.model.colorsPrice}
                                 modelActualImages={item.model.actualImages}
                                 modelActualFullImages={item.model.actualFullImages}
                                 manufacturingStart={item.manufacturing.start}

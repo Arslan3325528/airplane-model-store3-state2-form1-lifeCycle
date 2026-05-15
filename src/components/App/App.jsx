@@ -42,7 +42,7 @@ export class App extends Component {
     indicesSelectedModels: JSON.parse(localStorage.getItem("indicesSelectedModels")) || [], //! масив індексів обраних моделей
     // selectedModels: [], //! масив обраних моделей
     selectedModels: (JSON.parse(localStorage.getItem("indicesSelectedModels")) || []).flatMap(id =>
-        aircrafts.filter((el) => id === el.id))
+      aircrafts.filter((el) => id === el.id)) //! масив обраних моделей
       .sort((a, b) => a.name.brief.localeCompare(b.name.brief)), //! масив обраних моделей
     isCartButton: false, //! тригер: "якщо активна кнопка «Кошик»"
     // totalTypes: aircrafts.length, //! кількість типів ЛА (всіх літальних апаратів)
@@ -50,7 +50,6 @@ export class App extends Component {
     aircraftsArrAfterFiltration: aircrafts,  //! дубльоване значення aircraftsArr після фільтрації
     radioButtonValue: "brief", //! значення параметра для пошуку/фільтрації радіо-кнопки
     inputSearchPlaceholder: "Введіть назву ЛА", //! значення placeholder для inputSearch
-
   };
 
   //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає

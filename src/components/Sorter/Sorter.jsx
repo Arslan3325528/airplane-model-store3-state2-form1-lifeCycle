@@ -22,7 +22,7 @@ export function Sorter({
     <>
       {(!isCartOn || numberOfSelectedModels) &&
         <div className={css.searchBox}>
-          <h3>Вибір параметра для пошуку/фільтрації:</h3>
+          <h3 className={css.formTitle}>Вибір параметра для пошуку/фільтрації:</h3>
           <form className={css.formRadioButton}>
             <label>
               <input
