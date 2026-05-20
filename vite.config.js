@@ -5,7 +5,7 @@ import path from 'path';
 //todo: https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/airplane-model-store3-state2/', //! <-- ім'я репозиторію
+  base: '/airplane-model-store3-state2-form1/', //! <-- ім'я репозиторію
   //! Налаштування Аліасів для абсолютних шляхів імпортів
   resolve: {
     alias: {
