@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ColorBox } from '@/components/ColorBox/ColorBox.jsx';
+import css from "./AppLoginForm.module.css"; 
 
 
 export class AppLoginForm extends Component {
@@ -16,8 +16,12 @@ export class AppLoginForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name="login" />
-        <input type="password" name="password" />
+        <label htmlFor="username">Логін:</label>
+        <input type="text" name="login" id="username" />
+
+        <label htmlFor="pwd">Пароль:</label>
+        <input type="password" name="password" id="pwd" />
+
         <button type="submit">Login</button>
       </form>
     );
