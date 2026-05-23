@@ -15,14 +15,20 @@ export class AppLoginForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form
+        className={css.loginForm}
+        onSubmit={this.handleSubmit}
+      >
         <label htmlFor="username">Логін:</label>
         <input type="text" name="login" id="username" />
 
         <label htmlFor="pwd">Пароль:</label>
         <input type="password" name="password" id="pwd" />
 
-        <button type="submit">Login</button>
+        <button
+          className={css.loginButton}
+          type="submit">Login
+        </button>
       </form>
     );
   }

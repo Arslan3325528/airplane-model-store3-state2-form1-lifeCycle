@@ -1,11 +1,11 @@
-form {
+.loginForm {
     width: 70%;
     margin: 20px auto;
     display: flex;
     gap: 10px;
 }
 
-button {
+.loginButton {
     padding: 5px 10px;
     border: 1px solid black;
     border-radius: 8px;
