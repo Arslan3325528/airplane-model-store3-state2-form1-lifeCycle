@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import debounce from "lodash.debounce";
 
 import { Filter } from '@/components/Filter/Filter.jsx';
 import { Sorter } from '@/components/Sorter/Sorter.jsx';
@@ -214,6 +215,26 @@ export class App extends Component {
     });
     this.updateSelectedModels(); //*✅ так додає останній елемент
   };
+  
+  //! Створюємо debounce як class property:
+  debouncedSearch = debounce((text) => {
+    console.log("❗️❗️❗️debounce_text", text);
+  }, 500);
+
+  //! Приклад
+  // handleChange = (event) => {
+  //   const text = event.target.value;
+
+  //   this.setState({
+  //     value: text,
+  //   });
+
+  //   this.debouncedSearch(text);
+  // };
+
+  // componentWillUnmount() {
+  //   this.debouncedSearch.cancel();
+  // };
 
   //! Обробка введених даних для пошуку(фільтрації) карток за ім'ям або іншими параметрами
   handleChangeInputSearchValue = event => {
@@ -281,6 +302,12 @@ export class App extends Component {
       default:
         fieldValue = "";
     };
+
+    this.debouncedSearch(event.target.value);
+  };
+
+  componentWillUnmount() {
+    this.debouncedSearch.cancel();
   };
 
   //! Обробка введених даних: значення параметра для пошуку/фільтрації радіо-кнопки
