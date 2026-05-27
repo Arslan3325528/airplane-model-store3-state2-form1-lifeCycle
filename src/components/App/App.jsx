@@ -219,31 +219,20 @@ export class App extends Component {
   //! Створюємо debounce як class property:
   debouncedSearch = debounce((text) => {
     console.log("❗️❗️❗️debounce_text", text);
-  }, 500);
-
-  //! Приклад
-  // handleChange = (event) => {
-  //   const text = event.target.value;
-
-  //   this.setState({
-  //     value: text,
-  //   });
-
-  //   this.debouncedSearch(text);
-  // };
-
-  // componentWillUnmount() {
-  //   this.debouncedSearch.cancel();
-  // };
+    return text
+  }, 2500);
 
   //! Обробка введених даних для пошуку(фільтрації) карток за ім'ям або іншими параметрами
   handleChangeInputSearchValue = event => {
     console.log("Подія onChange в inputSearch");
+
+    const textInput = event.target.value;
+
     // const onlyInputSearchValue = this.state.aircraftsArrAfterFiltration.filter(
-    //   aircraft => aircraft.name.brief.toLowerCase().startsWith(event.target.value.trim().toLowerCase())
+    //   aircraft => aircraft.name.brief.toLowerCase().startsWith(textInput.trim().toLowerCase())
     // );
     // this.setState({
-    //   inputSearchValue: event.target.value,
+    //   inputSearchValue: textInput,
     //   aircraftsArr: onlyInputSearchValue,
     // });
     const prevArray =
@@ -254,17 +243,17 @@ export class App extends Component {
         : this.state.aircraftsArrAfterFiltration
 
     const inputSearchValueBrief = prevArray.filter(
-      aircraft => aircraft.name.brief.toLowerCase().startsWith(event.target.value.trim().toLowerCase())
+      aircraft => aircraft.name.brief.toLowerCase().startsWith(textInput.trim().toLowerCase())
     );
     const inputSearchValueNickname = prevArray.filter(
-      aircraft => aircraft.name.nickname.toLowerCase().includes(event.target.value.trim().toLowerCase())
+      aircraft => aircraft.name.nickname.toLowerCase().includes(textInput.trim().toLowerCase())
     );
     const inputSearchValueCountry = prevArray.filter(
-      // aircraft => aircraft.info.country.toLowerCase().startsWith(event.target.value.trim().toLowerCase())
-      aircraft => aircraft.info.countries.some(country => country.toLowerCase().startsWith(event.target.value.trim().toLowerCase()))
+      // aircraft => aircraft.info.country.toLowerCase().startsWith(textInput.trim().toLowerCase())
+      aircraft => aircraft.info.countries.some(country => country.toLowerCase().startsWith(textInput.trim().toLowerCase()))
     );
     const inputSearchValueYear = prevArray.filter(
-      aircraft => String(aircraft.info.year).startsWith((event.target.value.trim()))
+      aircraft => String(aircraft.info.year).startsWith((textInput.trim()))
     );
 
     // console.log("⏰⏰⏰inputSearchValueYear:", inputSearchValueYear);
@@ -273,28 +262,28 @@ export class App extends Component {
     switch (this.state.radioButtonValue) {
       case "brief":
         this.setState({
-          inputSearchValue: event.target.value,
+          inputSearchValue: textInput,
           aircraftsArr: inputSearchValueBrief,
           selectedModels: inputSearchValueBrief,
         });
         break;
       case "nickname":
         this.setState({
-          inputSearchValue: event.target.value,
+          inputSearchValue: textInput,
           aircraftsArr: inputSearchValueNickname,
           selectedModels: inputSearchValueNickname,
         });
         break;
       case "country":
         this.setState({
-          inputSearchValue: event.target.value,
+          inputSearchValue: textInput,
           aircraftsArr: inputSearchValueCountry,
           selectedModels: inputSearchValueCountry,
         });
         break;
       case "year":
         this.setState({
-          inputSearchValue: event.target.value,
+          inputSearchValue: textInput,
           aircraftsArr: inputSearchValueYear,
           selectedModels: inputSearchValueYear,
         });
@@ -303,7 +292,7 @@ export class App extends Component {
         fieldValue = "";
     };
 
-    this.debouncedSearch(event.target.value);
+    this.debouncedSearch(textInput);
   };
 
   componentWillUnmount() {

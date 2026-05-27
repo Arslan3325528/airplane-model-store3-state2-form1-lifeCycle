@@ -19,10 +19,10 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter basename="/airplane-model-store3-state2-form1">
       <ThemeProvider theme={theme}>
-        {/* <App /> */}
+        <App />
         {/* <AppColorBox />  */}
         {/* <AppLoginForm onSubmit={values => console.log(values)} /> */}
-        <AppSearchDebounce />
+        {/* <AppSearchDebounce /> */}
       </ThemeProvider>
     </BrowserRouter>
   </StrictMode >

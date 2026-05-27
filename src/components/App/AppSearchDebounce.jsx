@@ -7,16 +7,18 @@ export class AppSearchDebounce extends Component {
   };
 
   debouncedSearch = debounce((text) => {
-    console.log("Поиск:", text);
+    console.log("Пошук-debounce:", text);
   }, 500);
 
   handleChange = (event) => {
-    const text = event.target.value;
+    const text = event.target.value; 
 
     this.setState({
+      // value: event.target.value,
       value: text,
     });
 
+    // this.debouncedSearch(event.target.value);
     this.debouncedSearch(text);
   };
 
