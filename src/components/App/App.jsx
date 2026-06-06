@@ -207,9 +207,11 @@ export class App extends Component {
         inputSearchValue: "",
         indicesSelectedModels:
           exists
-            ? this.state.indicesSelectedModels.filter(item => item !== id)
-          // : [...prevState.indicesSelectedModels, id] //! без сортування
-            : [...this.state.indicesSelectedModels, id].sort((a, b) => a - b), //! сортування за id
+            // ? this.state.indicesSelectedModels.filter(item => item !== id)
+            ? prevState.indicesSelectedModels.filter(item => item !== id)
+            // : [...prevState.indicesSelectedModels, id] //! без сортування
+            // : [...this.state.indicesSelectedModels, id].sort((a, b) => a - b), //! сортування за id
+            : [...prevState.indicesSelectedModels, id].sort((a, b) => a - b), //! сортування за id
         // selectedModels: updateSelectedModels(prevState.indicesSelectedModels, aircrafts), //!❌ так НЕ додає останній елемент
       };
     });
