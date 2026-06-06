@@ -9,7 +9,8 @@ export function PlanesList({
     items,
     indicesArray,
     onActiveId,
-    inputSearchValue //! значення inputSearch
+    inputSearchValue, //! значення inputSearch
+    inputSearchValueTrigger //! тригер для коректної роботи інпуту після очищення
 })
 {
     return (
@@ -46,7 +47,7 @@ export function PlanesList({
                         </li>
                     )}
                 </ul>
-                : (inputSearchValue)
+                : (inputSearchValue || inputSearchValueTrigger)
                     ? <h2 className={css.invitation}>Нічого не знайдено... ☹️</h2> 
                     : <h2 className={css.invitation}>Додайте товар до кошику... 😉</h2>
             }

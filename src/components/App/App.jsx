@@ -51,6 +51,7 @@ export class App extends Component {
     aircraftsArrAfterFiltration: aircrafts,  //! дубльоване значення aircraftsArr після фільтрації
     radioButtonValue: "brief", //! значення параметра для пошуку/фільтрації радіо-кнопки
     inputSearchPlaceholder: "Введіть назву ЛА", //! значення placeholder для inputSearch
+    inputSearchValueTrigger: false, //! тригер для коректної роботи інпуту після очищення
   };
 
   //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
@@ -266,6 +267,7 @@ export class App extends Component {
     this.setState({
       aircraftsArr: result,
       selectedModels: result,
+      inputSearchValueTrigger: false //! тригер для коректної роботи інпуту після очищення
     });
   };
 
@@ -284,6 +286,7 @@ export class App extends Component {
 
     this.setState({
       inputSearchValue: textInput,
+      inputSearchValueTrigger: true, //! тригер для коректної роботи інпуту після очищення
     });
 
     //todo: ❌ Без debounce:
@@ -410,6 +413,7 @@ export class App extends Component {
       aircraftsArrAfterFiltration,  //! дубльоване значення aircraftsArr після фільтрації
       radioButtonValue, //! значення параметра для пошуку/фільтрації радіо - кнопки
       inputSearchPlaceholder, //! значення placeholder для inputSearch
+      inputSearchValueTrigger, //! тригер для коректної роботи інпуту після очищення
     } = this.state;
 
     //! Рахуємо кількість типів ЛА
@@ -490,6 +494,7 @@ export class App extends Component {
             indicesArray={indicesSelectedModels}
             onActiveId={this.getActiveId}
             inputSearchValue={inputSearchValue} //! значення inputSearch
+            inputSearchValueTrigger={inputSearchValueTrigger} //! тригер для коректної роботи інпуту після очищення
           />
         </Section >
       </>
