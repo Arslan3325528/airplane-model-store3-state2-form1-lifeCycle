@@ -9,6 +9,7 @@ console.log("data:", data);
 export class AppSearchDebounce extends Component {
   state = {
     value: "",
+    dataSearch: data
   };
 
   debouncedSearch = debounce((text) => {
@@ -20,6 +21,14 @@ export class AppSearchDebounce extends Component {
 
     this.setState({
       value: text,
+    });
+
+    const filtered = data.filter(item =>
+      item.title.toLowerCase().includes(text.toLowerCase())
+        );
+
+    this.setState({
+      dataSearch: filtered,
     });
 
     this.debouncedSearch(text);
@@ -39,7 +48,7 @@ export class AppSearchDebounce extends Component {
           onChange={this.handleChange}
         />
         <ul className={css.cards}>
-          {data.map(item =>
+          {this.state.dataSearch.map(item =>
             <li
               className={css.card}
               key={item.id}
