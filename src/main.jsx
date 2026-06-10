@@ -14,6 +14,7 @@ import {
   AppSearchDebounceTextBacklight, //! Пошук елементів + Debounce + Підсвічування тексту
   AppUncontrolledElementsForm, //! 4.4.1.Неконтрольовані елементи форм
   AppControlledElementsForm, //! 4.4.2.Контрольовані елементи форм
+  AppComplexForms //! 4.4.3.Складні форми
 } from '@/components/App';
 
 
@@ -26,7 +27,8 @@ createRoot(document.getElementById('root')).render(
         {/* <AppSearchDebounce /> */}
         {/* <AppSearchDebounceTextBacklight /> */}
         {/* <AppUncontrolledElementsForm onSubmit={values => console.log(values)} /> */}
-        <AppControlledElementsForm />
+        {/* <AppControlledElementsForm /> */}
+        <AppComplexForms />
       </ThemeProvider>
     </BrowserRouter>
   </StrictMode >

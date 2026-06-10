@@ -1,16 +1,16 @@
 // console.log(
-//   "%c 4.4.1.Неконтрольовані елементи форм",
+//   "%c 4.4.3.Складні форми",
 //   "color: white; background-color: #D33F49",
 // );
 
 import React, { Component } from "react";
-import css from "./AppUncontrolledElementsForm.module.css";
+import css from "./AppComplexForms.module.css";
 
 
-export class AppUncontrolledElementsForm extends Component {
-  handleSubmit = event => {
-    event.preventDefault();
-    const form = event.currentTarget;
+export class AppComplexForms extends Component {
+  handleSubmit = evt => {
+    evt.preventDefault();
+    const form = evt.currentTarget;
     const login = form.elements.login.value;
     const password = form.elements.password.value;
     console.log(login, password);
@@ -58,8 +58,3 @@ export class AppUncontrolledElementsForm extends Component {
     );
   }
 };
-
-// ReactDOM.render(
-//   <AppUncontrolledElementsForm onSubmit={values => console.log(values)} />,
-//   document.getElementById("root")
-// );
