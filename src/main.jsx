@@ -25,10 +25,10 @@ createRoot(document.getElementById('root')).render(
         {/* <App /> */}
         {/* <AppColorBox />  */}
         {/* <AppSearchDebounce /> */}
-        {/* <AppSearchDebounceTextBacklight /> */}
+        <AppSearchDebounceTextBacklight />
         {/* <AppUncontrolledElementsForm onSubmit={values => console.log(values)} /> */}
         {/* <AppControlledElementsForm /> */}
-        <AppComplexForms onSubmit={values => console.log(values)} />
+        {/* <AppComplexForms onSubmit={values => console.log(values)} /> */}
       </ThemeProvider>
     </BrowserRouter>
   </StrictMode >
