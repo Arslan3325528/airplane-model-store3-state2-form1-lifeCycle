@@ -1,7 +1,4 @@
-console.log(
-    "%c LESSON-44(20-2)_JS ",
-    "color: white; background-color: #D33F49",
-);
+
 
 // import '../css/lesson-44_20-2_filter-only.css'
 

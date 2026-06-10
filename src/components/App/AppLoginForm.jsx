@@ -1,3 +1,8 @@
+// console.log(
+//   "%c 4.4.1.Неконтрольовані елементи форм",
+//   "color: white; background-color: #D33F49",
+// );
+
 import React, { Component } from "react";
 import css from "./AppLoginForm.module.css"; 
 

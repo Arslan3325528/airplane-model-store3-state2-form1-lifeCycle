@@ -1,3 +1,8 @@
+// console.log(
+//   "%c Пошук елементів + Debounce + Підсвічування тексту",
+//   "color: white; background-color: #D33F49",
+// );
+
 import React, { Component } from "react";
 import debounce from "lodash.debounce"; //! 2.Імпорт:
 
