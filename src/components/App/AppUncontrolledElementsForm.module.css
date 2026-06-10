@@ -11,8 +11,8 @@
     color: #9d0000;
 }
 
-label input {
-    width: 19px;
+.loginFormInput {
+    width: 200px;
 }
 
 .loginButton {
