@@ -10,7 +10,8 @@ export function PlanesList({
     indicesArray,
     onActiveId,
     inputSearchValue, //! значення inputSearch
-    inputSearchValueTrigger //! тригер для коректної роботи інпуту після очищення
+    inputSearchValueTrigger, //! тригер для коректної роботи інпуту після очищення
+    // onHighlightTextProtection, //! функція підсвічування тексту та допоміжна функція ---> ВИНОСИМО в utils
 })
 {
     return (
@@ -43,6 +44,8 @@ export function PlanesList({
                                 manufacturingEnd={item.manufacturing.end}
                                 onActiveId={onActiveId}
                                 indicesArray={indicesArray}
+                                // onHighlightTextProtection={onHighlightTextProtection} //! ---> ВИНОСИМО в utils
+                                inputSearchValue={inputSearchValue}
                             />
                         </li>
                     )}

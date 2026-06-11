@@ -10,6 +10,8 @@ import aircrafts from '@/json/aircrafts.json';
 
 import { updateSelectedModels } from '@/utils'; //! формуємо(оновлюємо) масив обраних моделей [selectedModels]
 
+// import css from "./App.module.css";
+
 
 //! Приклад початкового сортування на ім'я (за полем name.brief)
 aircrafts.sort((a, b) => a.name.brief.localeCompare(b.name.brief));
@@ -399,6 +401,43 @@ export class App extends Component {
     });
   };
 
+  //! Функція підсвічування тексту та допоміжна функція ---> ВИНОСИМО в utils
+  //* Якщо користувач буде вводити: . + * ? [ ] ( )
+  //* то RegExp потрібно екранувати допоміжною функцією:
+  // escapeRegExp = (str) => {
+  //   return str.replace(
+  //     /[.*+?^${}()|[\]\\]/g,
+  //     "\\$&"
+  //   );
+  // };
+  
+  //! ---> ВИНОСИМО в utils
+  //* Використання RegExp з экрануванням допоміжною функцією:
+  // highlightTextProtection = (text, keyword) => {
+  //   if (!keyword) return text;
+
+  //   const escapedKeyword = this.escapeRegExp(keyword);
+
+  //   const regex = new RegExp(
+  //     `(${escapedKeyword})`,
+  //     "gi"
+  //   );
+
+  //   return text
+  //     .split(regex)
+  //     .map((part, index) =>
+  //       part.toLowerCase() === keyword.toLowerCase()
+  //         ? (
+  //           <span
+  //             key={index}
+  //             className={css.highlight}
+  //           >
+  //             {part}
+  //           </span>
+  //         )
+  //         : part
+  //     );
+  // };
 
   render() {
     const {
@@ -495,6 +534,7 @@ export class App extends Component {
             onActiveId={this.getActiveId}
             inputSearchValue={inputSearchValue} //! значення inputSearch
             inputSearchValueTrigger={inputSearchValueTrigger} //! тригер для коректної роботи інпуту після очищення
+            // onHighlightTextProtection={this.highlightTextProtection} //! функція підсвічування тексту та допоміжна функція ---> ВИНОСИМО в utils
           />
         </Section >
       </>

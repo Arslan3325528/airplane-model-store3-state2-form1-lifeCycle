@@ -12,7 +12,11 @@ import { TbClockHour4Filled } from "react-icons/tb";
 import { FcTrademark } from "react-icons/fc";
 
 //! Для розрахунку тривалості виробництва (реекспорт)
-import {getManufacturingYears, getAircraftTitleBgColor} from '@/utils'; 
+import {
+  getManufacturingYears,
+  getAircraftTitleBgColor,
+  onHighlightTextProtection, //! функція підсвічування тексту та допоміжна функція
+} from '@/utils'; 
 
 //! Константи для розмірів іконок
 import { iconSize } from '@/constants';
@@ -38,7 +42,9 @@ export function Planes({
   manufacturingStart,
   manufacturingEnd,
   indicesArray,
-  onActiveId
+  onActiveId,
+  // onHighlightTextProtection, //! функція підсвічування тексту та допоміжна функція ---> ВИНОСИМО в utils
+  inputSearchValue, //! значення inputSearch
 })
 {
   //! Рахуємо кількість моделей <numberModels> виходячи з наявності фактичної ціни
@@ -55,6 +61,7 @@ export function Planes({
       <p className={css.textField}><FcTrademark size={iconSize.md} className={css.icon} /> Повна назва: <span className={css.boldStyle} >{nameFull}</span></p>
       <p className={css.textField}><GiCommercialAirplane size={iconSize.md} className={css.icon} /> Тип: <span className={css.textFieldValue}>{type}</span></p>
       <p className={css.textField}><GiCurlyMask size={iconSize.md} className={css.icon} /> Прізвисько: <span className={css.textFieldValue}>{nickname}</span></p>
+      <p className={css.textField}><GiCurlyMask size={iconSize.md} className={css.icon} /> Прізвисько: <span className={css.textFieldValue}>{onHighlightTextProtection(nickname, inputSearchValue)}</span></p>
       {/* <p className={css.textField}><CiGlobe size={iconSize.md} className={css.icon} /> Країна виробник: <span className={css.textFieldValue}>{country}</span></p> */}
       <p className={css.textField}>
         <CiGlobe size={iconSize.md} className={css.icon} /> Країна виробник: <span className={css.textFieldValue}>
