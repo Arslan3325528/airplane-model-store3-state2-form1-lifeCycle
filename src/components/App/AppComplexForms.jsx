@@ -1,10 +1,11 @@
 // console.log(
-//   "%c 4.4.3.Складні форми",
+//   "%c 4.4.3.Складні форми + Генерація Id елементів форми",
 //   "color: white; background-color: #D33F49",
 // );
 
 import React, { Component } from "react";
 import { ComplexForms } from '@/components/ComplexForms/ComplexForms.jsx';
+import { ComplexFormsGenerationID } from '@/components/ComplexFormsGenerationID/ComplexFormsGenerationID.jsx';
 // import css from "./AppComplexForms.module.css";
 
 export class AppComplexForms extends Component {
@@ -33,10 +34,14 @@ export class AppComplexForms extends Component {
     console.log("______________________________________________");
 
     return (
-      <ComplexForms
-        // onSubmit={values => console.log(values)}
-        onSubmit={this.submitForm}
-      />
+      <>
+        {/* <ComplexForms
+          // onSubmit={values => console.log(values)}
+          onSubmit={this.submitForm}
+        /> */}
+        <ComplexFormsGenerationID onSubmit={this.submitForm} />
+        <ComplexFormsGenerationID onSubmit={this.submitForm} />
+      </>
     );
   }
 };
