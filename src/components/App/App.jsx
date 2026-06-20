@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import debounce from "lodash.debounce";
 
-import { ScaleSlection } from '@/components/ScaleSlection/ScaleSlection.jsx';
+import { ScaleSelection } from '@/components/ScaleSelection/ScaleSelection.jsx';
 import { Filter } from '@/components/Filter/Filter.jsx';
 import { Sorter } from '@/components/Sorter/Sorter.jsx';
 import { Section } from '@/components/Section/Section.jsx';
@@ -495,7 +495,7 @@ export class App extends Component {
     return (
       <>
         {/*//!  Вибір масштабу моделі */}
-        <ScaleSlection
+        <ScaleSelection
           // inputSearchValue={inputSearchValue} //! значення inputSearch
           
         />
