@@ -452,6 +452,7 @@ export class App extends Component {
 
     this.setState({
       modelsSelectedScale: modelsScale,
+      aircraftsArr: modelsScale,
     });
   };
     
