@@ -820,5 +820,55 @@
         "/airplane-model-store3-state2-form1/images/planes-actual/f-82-comp-4.jpg"
       ]
     }
+  },
+  {
+    "id": "0019",
+    "aircraftType": "plane",
+    "name": {
+      "brief": "YF-23",
+      "full": "Northrop/McDonnell Douglas YF-23",
+      "nickname": "PAV-1: Чорна вдова II («Black Widow II») або Павук («Spider»), PAV-2: Сірий привид («Gray Ghost»)"
+    },
+    "info": {
+      "year": 1989,
+      "countries": ["США"],
+      "type": "Прототип багатоцільового винищувача п'ятого покоління",
+      "price": "~$35–80 млн",
+      "description": "Прототип YF-23 розроблявся з урахуванням вимог ПС США до підвищеної бойової живучості, малопомітності, можливостям польоту на надзвуковій швидкості без використання форсажу і простоті обслуговування. Першочерговим завданням було зниження помітності радіолокації літака. Всього було побудовано два літаки — PAV-1: «Black Widow II» («Чорна вдова II») або ж неофіційна назва «Spider» («Павук») та PAV-2: «Gray Ghost» («Сірий привид»). Прототип YF-23 програв у конкурсі YF-22, який у 2005 році надійшов на озброєння ПС США"
+    },
+    "url": {
+      "wikipedia": "https://ru.wikipedia.org/wiki/Northrop/McDonnell_Douglas_YF-23",
+      "main": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Northrop_YF-23_DFRC.jpg",
+      "promotional": "https://lh3.googleusercontent.com/pw/AP1GczMyVtbcrvGChAb4XMmAkP4AiLlVqBc3mQNVafkFxSL7lXsDu-0qu3LNV2-3cMn69gjkKZBuQO1Kp2eMyZDlI-cYxZuha524SBY1zVODOGstdvsdwFKVpIzEsrXuA1XnIyX2yHXoTphzIvpqSQuamjnz=w1333-h1254-s-no-gm?authuser=0"
+    },
+    "manufacturing": {
+      "start": "1989-01-01T00:00:00",
+      "end": "1990-01-01T00:00:00"
+    },
+    "model": {
+      "scale": [72],
+      "colorsPrice": {
+        "main": 910
+      },
+      "actualImages": [
+        "/airplane-model-store3-state2-form1/images/planes-actual/yf-23-comp-1.jpg",
+        "/airplane-model-store3-state2-form1/images/planes-actual/yf-23-comp-2.jpg",
+        "/airplane-model-store3-state2-form1/images/planes-actual/yf-23-comp-3.jpg",
+        "/airplane-model-store3-state2-form1/images/planes-actual/yf-23-comp-4.jpg"
+      ],
+      "actualFullImages": [
+        "https://lh3.googleusercontent.com/pw/AP1GczPhfYcxus7U75oiK6kMwOcK5UV5YO-9N4Yf9cqzrz68GWuCgluDRW1twaTtFQGp543w7w9QWxWZFY0dHH2w1D9zwcbl8oZeK5hmtnSJu93T1u3z16dyVAc1NI-Yvkghq0oimYtgeOB4UShV0gvsgDEU=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczM6GGy0L2vSou4aNb8HPV2_Zkrl0nYI9fizpsh8pAKoaGHWJwhGZwOfsnp07SO9IMchCyu0JwdPRA7wu-cugTi15MaryIsFwJi9_7nc8FJ-4wVoCUJi23msc1GCgVhpb04qPc0QW0X-2jNbauPDMdCF=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczO-JWhxcqnHhZG1D5jU9vw3lyIRAe4QMh3BpZOUbTuU_0gNgIRMcK5EPw6XTbueChLbVEP91NWZ0COjKJosOGGhM6ZHD_9uUOClHe15iscNtwmOaLGyDb53AEWVYuYpF0PEPyWm6_N-FHpjruqudVMe=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczOwA_xG2NknuHm4sziKdS64IorlnHUY81FeM0vstJF7zE7vRD9IP5iOPURuEbEKFD9G5pxKRph7mGBBG0-x7xiC0Sbm-uviJ18iuMVN31XLEhv2zYR2x2bDXMfN1O7aks4iuxunAB3YfQt9IonJpAHL=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczMomhCkYAFx-B5ZWb0XTLWSpI1naVRPn31Y0HFBpAhU4gzjf3ow9ZdSzCw4GmS6xFgwBKLvRHgvLwuPzj9H9t6bdA6hyRb3Ms2gDPqOeQ2KKpx06niwZraj18G9eNbp879szUN3-LH24efWtG5JwRC6=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczMR_0lM4emOoLRQZVwWCsN4A8Hfd8ddchk6PLLw8gSJDxyB9PAcr4j7SKhvnK6g51ezYQwu002Pt0d20GtxLvk7dwCx2pXOzbil164yvRwA_PWtvJo6o4fXUV1MgqdnkjLpNbHjhcR1co1C55x-1yp9=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczNYQGa1OXMZFiHrg7g9XHpWZPrT4GrmB12bWB6D-k7p3MoEDlSC1E3gv3K8f9CfxrVoXyz_zK88NhVAy4Vmt_SQgXbIEKiaU8hR6GpQmL6N0r7fOa6vLECtqsrV44EpfTmnMUp7tIInRK7UP-ZXLAZv=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczMUEE4v6CkZBR2ZnI_rl_EH5N2RND4aDNtqVHXkNzAA4VX9719P4uujY1uEhU-n7ljyUHiAJ0VClpkw1MhI_ocJ-lT2B3rz12-DzqEsg7NSqI8zbOUNk7vfIrGT6VS8GsA7Z4BXK0EJsadb7r9atBej=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczNkb6kWzzaVl_RKoTEoKAoZRwYYupArd8tbSC5TP9kFUCazzGOmdGPpwg7pp3rBN0WyaKprrDXDEHA9Ycr6QguCkRBIMiwS1W3JdPe2dMv4h5pTRAcXVstwDABEt-LLMtu-kuS6OxA6hck6PiB1KVzA=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczND6VGEzBrTh3YmRV4Jbtl3_XGnu9KAdSZhz8xNWvKCgsWT8Nkoh8AU9cHKIjPAWbviIiLN7wLqpMQWdZs_-lt-swHRdzNiz_EC0ztfb39VKKLtaWUlOO1CbDyg8shQiwk1hC1-H6oUgb5TY6HIINJ0=w2450-h1838-s-no-gm?authuser=0",
+        "https://lh3.googleusercontent.com/pw/AP1GczM9q-QwnsYWt3byp582HWCywr904EqlPZitUOYBM-1VB8lbd4jPMZoJ-9RXRuNnancTHqw2-KGC_il04pp0svAJ4kMm4loVjUqNweJ2gF89v6D9VpV4WAYZYRUPp8wWlLF87BKsjSKD7a5O-6yKHJWV=w2450-h1838-s-no-gm?authuser=0"
+      ]
+    }
   }
 ]
