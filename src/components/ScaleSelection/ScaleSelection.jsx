@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import aircrafts from '@/json/aircrafts.json';
+// import aircrafts from '@/json/aircrafts.json'; //! передаємо, як props
 
 import css from "./ScaleSelection.module.css";
 
@@ -22,11 +22,17 @@ export class ScaleSelection extends Component {
     //! Деструктуризуємо:
     const { name, value } = event.currentTarget;
 
+    //! Деструктуризуємо props:
+    const {
+      aircrafts,
+      onGetModelsSelectedScale
+    } = this.props;
+
     //! Знаходимо масив моделей обраного масштабу
     const modelsSelectedScale =
       value === "all"
-      ? aircrafts
-      : aircrafts.filter(aircraft => aircraft.model.scale.some(item => item === Number(value)));
+        ? aircrafts
+        : aircrafts.filter(aircraft => aircraft.model.scale.some(item => item === Number(value)));
 
     //! Зберігаємо значення інпутів в state, використовуючи властивості об'єкта, що обчислюються
     this.setState({
@@ -34,7 +40,7 @@ export class ScaleSelection extends Component {
       // modelsSelectedScale,
     });
 
-    this.props.onGetModelsSelectedScale(modelsSelectedScale); //! підняття стану + передача modelsSelectedScale в App.jsx
+    onGetModelsSelectedScale(modelsSelectedScale); //! підняття стану + передача modelsSelectedScale в App.jsx
   }
 
   render() {
@@ -54,30 +60,30 @@ export class ScaleSelection extends Component {
 
     return (
       <div className={css.scaleSelectionBox}>
-      {!isLocked && 
-        <>
-          <h3 className={css.scaleSelectionTitle}>Оберіть масштаб моделі:</h3>
-          <label>
-            {/* масштаб моделі */}
-            <select
-              className={css.scaleSelectionSelect}
-              name="modelScale"
-              value={modelScale}
-              onChange={this.handleChangeModelScale}
-              disabled={isLocked} //! блокування, якщо активна кнопка «Кошик»
-            >
-              <option className={css.scaleSelectionOption} value="all">Всі</option>
-              <option className={css.scaleSelectionOption} value="200">1:200</option>
-              <option className={css.scaleSelectionOption} value="144">1:144</option>
-              <option className={css.scaleSelectionOption} value="100">1:100</option>
-              <option className={css.scaleSelectionOption} value="72">1:72</option>
-              <option className={css.scaleSelectionOption} value="60">1:60</option>
-              <option className={css.scaleSelectionOption} value="48">1:48</option>
-              <option className={css.scaleSelectionOption} value="32">1:32</option>
-            </select>
-          </label>
-        </>
-      }
+        {!isLocked && 
+          <>
+            <h3 className={css.scaleSelectionTitle}>Оберіть масштаб моделі:</h3>
+            <label>
+              {/* масштаб моделі */}
+              <select
+                className={css.scaleSelectionSelect}
+                name="modelScale"
+                value={modelScale}
+                onChange={this.handleChangeModelScale}
+                disabled={isLocked} //! блокування, якщо активна кнопка «Кошик»
+              >
+                <option className={css.scaleSelectionOption} value="all">Всі</option>
+                <option className={css.scaleSelectionOption} value="200">1:200</option>
+                <option className={css.scaleSelectionOption} value="144">1:144</option>
+                <option className={css.scaleSelectionOption} value="100">1:100</option>
+                <option className={css.scaleSelectionOption} value="72">1:72</option>
+                <option className={css.scaleSelectionOption} value="60">1:60</option>
+                <option className={css.scaleSelectionOption} value="48">1:48</option>
+                <option className={css.scaleSelectionOption} value="32">1:32</option>
+              </select>
+            </label>
+          </>
+        }
       </div>
     )
   }
