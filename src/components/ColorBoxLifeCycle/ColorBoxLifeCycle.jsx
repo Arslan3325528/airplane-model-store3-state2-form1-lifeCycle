@@ -19,7 +19,7 @@ export class ColorBoxLifeCycle extends Component {
     };
 
     //! 3.localStorage - Оновлення(синхронізація) localStorage при кожній зміні selectedButtonsIdx
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) { //todo: звичайний метод класу
         if (prevState.selectedButtonsIdx !== this.state.selectedButtonsIdx) {
             localStorage.setItem(
                 "selectedIdx",
