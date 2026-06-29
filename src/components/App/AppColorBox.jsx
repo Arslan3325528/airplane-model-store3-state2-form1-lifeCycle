@@ -1,5 +1,6 @@
 // import React, { Component } from "react";
 import { ColorBox } from '@/components/ColorBox/ColorBox.jsx';
+import { ColorBoxLifeCycle } from '@/components/ColorBoxLifeCycle/ColorBoxLifeCycle.jsx';
 
 
 const colorBoxOptions = [
@@ -15,7 +16,8 @@ const colorBoxOptions = [
 //! Звичайний компонент
 export function AppColorBox() {
     return (
-      <ColorBox colorBoxes={colorBoxOptions}/>
+      // <ColorBox colorBoxes={colorBoxOptions} />
+      <ColorBoxLifeCycle colorBoxes={colorBoxOptions} />
     )
 };
 

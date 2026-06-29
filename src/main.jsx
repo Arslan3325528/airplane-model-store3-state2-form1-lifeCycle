@@ -22,8 +22,8 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter basename="/airplane-model-store3-state2-form1-lifeCycle">
       <ThemeProvider theme={theme}>
-        <App />
-        {/* <AppColorBox />  */}
+        {/* <App /> */}
+        <AppColorBox /> 
         {/* <AppSearchDebounce /> */}
         {/* <AppSearchDebounceTextBacklight /> */}
         {/* <AppUncontrolledElementsForm onSubmit={values => console.log(values)} /> */}
