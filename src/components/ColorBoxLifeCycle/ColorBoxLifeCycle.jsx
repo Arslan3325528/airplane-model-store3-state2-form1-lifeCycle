@@ -32,7 +32,7 @@ export class ColorBoxLifeCycle extends Component {
         const nextActiveButtonIdx = this.state.activeButtonIdx;
 
         if (prevActiveButtonIdx !== nextActiveButtonIdx) {
-            console.log("Оновлено поле 'state.activeButtonIdx'");
+            console.log("❗️❗️❗️Оновлено поле 'state.activeButtonIdx'");
             //todo: Оновлення localStorage:
             localStorage.setItem('activeButtonIdx', JSON.stringify(nextActiveButtonIdx));
         };
