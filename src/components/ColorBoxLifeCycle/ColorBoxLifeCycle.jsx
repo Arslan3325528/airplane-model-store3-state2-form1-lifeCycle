@@ -17,7 +17,7 @@ export class ColorBoxLifeCycle extends Component {
             localStorage.setItem("selectedIdx", JSON.stringify([]));
         };
 
-        //todo: Оновлення state "activeButtonIdx" при наявності значень в localStorage "activeButtonIdx"
+        //todo: Оновлення state "activeButtonIdx" при наявності значень в localStorage "activeButtonIdx" за допомогою  componentDidMount
         const activeButtonIdx = localStorage.getItem("activeButtonIdx");
         console.log("❇️activeButtonIdx:", activeButtonIdx);
 
@@ -39,7 +39,7 @@ export class ColorBoxLifeCycle extends Component {
             );
         };
 
-        //todo: Перевірка на оновлення поля state.activeButtonIdx
+        //todo: 1.Перевірка оновлення компонента у звичайному методі класу componentDidUpdate:
         const prevActiveButtonIdx = prevState.activeButtonIdx;
         const nextActiveButtonIdx = this.state.activeButtonIdx;
 
