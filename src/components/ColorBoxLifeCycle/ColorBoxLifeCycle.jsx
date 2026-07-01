@@ -11,11 +11,23 @@ export class ColorBoxLifeCycle extends Component {
     };
 
     //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
-    componentDidMount() {
+    componentDidMount() { //todo: звичайний метод класу
         const saved = localStorage.getItem("selectedIdx");
         if (!saved) {
             localStorage.setItem("selectedIdx", JSON.stringify([]));
-        }
+        };
+
+        //todo: Оновлення state "activeButtonIdx" при наявності значень в localStorage "activeButtonIdx"
+        const activeButtonIdx = localStorage.getItem("activeButtonIdx");
+        console.log("❇️activeButtonIdx:", activeButtonIdx);
+
+        const parsedActiveButtonIdx = JSON.parse(activeButtonIdx);
+        console.log("❇️❇️parsedActiveButtonIdx:", parsedActiveButtonIdx);
+
+        //todo: Оновлення state "activeButtonIdx":
+        if (parsedActiveButtonIdx) {
+            this.setState({ activeButtonIdx: parsedActiveButtonIdx })
+        };
     };
 
     //! 3.localStorage - Оновлення(синхронізація) localStorage при кожній зміні selectedButtonsIdx
@@ -33,8 +45,8 @@ export class ColorBoxLifeCycle extends Component {
 
         if (prevActiveButtonIdx !== nextActiveButtonIdx) {
             console.log("❗️❗️❗️Оновлено поле 'state.activeButtonIdx'");
-            //todo: Оновлення localStorage:
-            localStorage.setItem('activeButtonIdx', JSON.stringify(nextActiveButtonIdx));
+            //todo: Оновлення localStorage "activeButtonIdx":
+            localStorage.setItem("activeButtonIdx", JSON.stringify(nextActiveButtonIdx));
         };
     };
 
