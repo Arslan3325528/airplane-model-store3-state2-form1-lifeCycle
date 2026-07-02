@@ -8,8 +8,19 @@ import { ComplexForms } from '@/components/ComplexForms/ComplexForms.jsx';
 import { ComplexFormsGenerationID } from '@/components/ComplexFormsGenerationID/ComplexFormsGenerationID.jsx';
 import { ComplexFormsGenerationIDRadioButton } from '@/components/ComplexFormsGenerationIDRadioButton/ComplexFormsGenerationIDRadioButton.jsx';
 import { ComplexFormsGenerationIDRadioButtonCheckboxesSelect } from '@/components/ComplexFormsGenerationIDRadioButtonCheckboxesSelect/ComplexFormsGenerationIDRadioButtonCheckboxesSelect.jsx';
-
+import { Modal } from '@/components/Modal/Modal.jsx';
+import { ColorBoxLifeCycle } from '@/components/ColorBoxLifeCycle/ColorBoxLifeCycle.jsx';
 // import css from "./AppComplexForms.module.css";
+
+const colorBoxOptions = [
+  { label: 'red', color: '#ff0000' },
+  { label: 'orange', color: '#ffa500' },
+  { label: 'yellow', color: '#ffff00' },
+  { label: 'green', color: '#008000' },
+  { label: 'lightblue', color: '#add8e6' },
+  { label: 'blue', color: '#3131ff' },
+  { label: 'violet', color: '#ee82ee' },
+];
 
 
 export class AppComplexForms extends Component {
@@ -17,7 +28,8 @@ export class AppComplexForms extends Component {
     formInputLogin: "",
     formInputPassword: "",
     formRadioButtonExperience: "",
-    formRadioButtonAge: ""
+    formRadioButtonAge: "",
+    showModal: false, //! контроль відкриття/закриття модального вікна
   };
 
   submitForm = (data) => {
@@ -30,12 +42,25 @@ export class AppComplexForms extends Component {
     });
   };
 
+  //! Відкриття/закриття модального вікна
+  // toggleModal = () => { //? без деструктурізації
+  //   this.setState(prevState => ({
+  //     showModal: !prevState.showModal
+  //   }));
+  // };
+  toggleModal = () => { //? з деструктурізацією
+    this.setState(({ showModal }) => ({
+      showModal: !showModal
+    }));
+  };
+
   render() {
     const {
       formInputLogin,
       formInputPassword,
       formRadioButtonExperience,
-      formRadioButtonAge
+      formRadioButtonAge,
+      showModal, //! контроль відкриття/закриття модального вікна
     } = this.state;
 
     console.log("----------------------------------------------");
@@ -43,6 +68,7 @@ export class AppComplexForms extends Component {
     console.log("✅Значення в App formInputPassword:", formInputPassword);
     console.log("✅Значення в App formRadioButtonExperience:", formRadioButtonExperience);
     console.log("✅Значення в App formRadioButtonAge:", formRadioButtonAge);
+    console.log("❇️Контроль відкриття/закриття модального вікна:", showModal);
     console.log("______________________________________________");
 
     return (
@@ -58,7 +84,35 @@ export class AppComplexForms extends Component {
         {/*//! + 4.4.5.Радіокнопки */}
         {/* <ComplexFormsGenerationIDRadioButton onSubmit={this.submitForm} /> */}
         {/*//! + 4.4.6.Чекбокси + 4.4.7.Селект */}
-        <ComplexFormsGenerationIDRadioButtonCheckboxesSelect onSubmit={this.submitForm} />
+        {/* <ComplexFormsGenerationIDRadioButtonCheckboxesSelect onSubmit={this.submitForm} /> */}
+        {/*//! Модальне вікно */}
+        {/* <Modal /> */}
+        {/* {showModal && <Modal />} */}
+        <button
+          type="button"
+          onClick={this.toggleModal}
+        >
+          Відкрити модалку
+        </button>
+        {showModal &&
+          <Modal>
+            <h1>Це контент модалки як children</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur
+              adipisicing elit. Omnis consequatur
+              commodi ad totam doloremque nulla
+              accusantium maiores eum deserunt
+              ullam maxime architecto, iure voluptatum,
+              ipsum laudantium recusandae reprehenderit
+              corrupti. Molestias?
+            </p>
+            <button
+              type="button"
+              onClick={this.toggleModal}
+            >
+              Закрити модалку
+            </button>
+          </Modal>}
+        <ColorBoxLifeCycle colorBoxes={colorBoxOptions} />
       </>
     );
   }
