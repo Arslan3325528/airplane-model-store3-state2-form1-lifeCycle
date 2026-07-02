@@ -7,9 +7,8 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';  //! для модального вікна
 import css from "./Modal.module.css";
 
-
-
 const modalRoot = document.querySelector('#modal-root');  //! для модального вікна
+
 
 export class Modal extends Component {
   componentDidMount() {
@@ -56,4 +55,5 @@ export class Modal extends Component {
       modalRoot,
     );
   };
-}
+};
+
