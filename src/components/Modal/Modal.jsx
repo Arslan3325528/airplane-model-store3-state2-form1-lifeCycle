@@ -41,13 +41,13 @@ export class Modal extends Component {
   // };
 
   render() {
-    //todo: без createPortal
+    //! Без createPortal
     // return (  
     //   <div className={css.modalBackdrop} onClick={this.handleBackdropClick}>
     //     <div className={css.modalContent} >{this.props.children}</div>
     //   </div>
     // );
-    //! для модального вікна з createPortal
+    //* Для модального вікна з createPortal
     return createPortal(  
       <div className={css.modalBackdrop} onClick={this.handleBackdropClick}>
         <div className={css.modalContent} >{this.props.children}</div>
