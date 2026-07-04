@@ -44,7 +44,7 @@ export class ColorBoxLifeCycle extends Component {
         const nextActiveButtonIdx = this.state.activeButtonIdx;
 
         if (prevActiveButtonIdx !== nextActiveButtonIdx) {
-            console.log("❗️❗️❗️Оновлено поле 'state.activeButtonIdx'");
+            console.log("❗️⭕️❗️Оновлено поле 'state.activeButtonIdx'");
             //todo: Оновлення localStorage "activeButtonIdx":
             localStorage.setItem("activeButtonIdx", JSON.stringify(nextActiveButtonIdx));
         };
@@ -84,7 +84,7 @@ export class ColorBoxLifeCycle extends Component {
         console.log("----------------------------------------------");
 
         return (
-            <>
+            <div className={css.parentContainer}>
                 {/*//! Блок вибору кольорів */}
                 <div className={css.colorBoxContainer}>
                     <h2 className={css.colorBoxTitle}>Вибір кольорів</h2>
@@ -139,7 +139,7 @@ export class ColorBoxLifeCycle extends Component {
                         ))}
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 };

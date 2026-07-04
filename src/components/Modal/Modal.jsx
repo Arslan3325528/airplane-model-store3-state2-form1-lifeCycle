@@ -40,15 +40,15 @@ export class Modal extends Component {
   //   }
   // };
 
-  // render() {
-  //   return ( 
-  //     <div className={css.modalBackdrop} onClick={this.handleBackdropClick}>
-  //       <div className={css.modalContent} >{this.props.children}</div>
-  //     </div>
-  //   );
-  // };
   render() {
-    return createPortal(  //! для модального вікна
+    //todo: без createPortal
+    // return (  
+    //   <div className={css.modalBackdrop} onClick={this.handleBackdropClick}>
+    //     <div className={css.modalContent} >{this.props.children}</div>
+    //   </div>
+    // );
+    //! для модального вікна з createPortal
+    return createPortal(  
       <div className={css.modalBackdrop} onClick={this.handleBackdropClick}>
         <div className={css.modalContent} >{this.props.children}</div>
       </div>,
@@ -56,4 +56,3 @@ export class Modal extends Component {
     );
   };
 };
-
