@@ -474,6 +474,7 @@ export class App extends Component {
       modelsSelectedScale: modelsScale,
       aircraftsArr: result,
       aircraftsArrAfterFiltration: result,
+      inputSearchValue: "", //! значення inputSearch
     });
   };
     
