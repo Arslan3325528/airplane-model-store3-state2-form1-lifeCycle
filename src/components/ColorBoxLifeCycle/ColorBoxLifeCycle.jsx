@@ -12,6 +12,7 @@ export class ColorBoxLifeCycle extends Component {
 
     //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
     componentDidMount() { //todo: звичайний метод класу
+        console.log("1️⃣❗️.componentDidMount");
         const saved = localStorage.getItem("selectedIdx");
         if (!saved) {
             localStorage.setItem("selectedIdx", JSON.stringify([]));
@@ -25,13 +26,14 @@ export class ColorBoxLifeCycle extends Component {
         console.log("❇️❇️parsedActiveButtonIdx:", parsedActiveButtonIdx);
 
         //todo: Оновлення state "activeButtonIdx":
-        if (parsedActiveButtonIdx) {
+        if (parsedActiveButtonIdx !== null) {
             this.setState({ activeButtonIdx: parsedActiveButtonIdx })
         };
     };
 
     //! 3.localStorage - Оновлення(синхронізація) localStorage при кожній зміні selectedButtonsIdx
     componentDidUpdate(prevProps, prevState) { //todo: звичайний метод класу
+        console.log("2️⃣❗️.componentDidUpdate");
         if (prevState.selectedButtonsIdx !== this.state.selectedButtonsIdx) {
             localStorage.setItem(
                 "selectedIdx",
@@ -42,6 +44,9 @@ export class ColorBoxLifeCycle extends Component {
         //todo: 1.Перевірка оновлення компонента у звичайному методі класу componentDidUpdate:
         const prevActiveButtonIdx = prevState.activeButtonIdx;
         const nextActiveButtonIdx = this.state.activeButtonIdx;
+
+        console.log("🔙prevActiveButtonIdx:", prevActiveButtonIdx);
+        console.log("🔜nextActiveButtonIdx:", nextActiveButtonIdx);
 
         if (prevActiveButtonIdx !== nextActiveButtonIdx) {
             console.log("❗️⭕️❗️Оновлено поле 'state.activeButtonIdx'");
@@ -69,6 +74,7 @@ export class ColorBoxLifeCycle extends Component {
     };
 
     render() {
+        console.log("0️⃣❗️.render");
         const { colorBoxes } = this.props; //! масив об'єктів всіх елементів(кольорів)
         const { activeButtonIdx, selectedButtonsIdx } = this.state;
 
