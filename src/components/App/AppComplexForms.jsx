@@ -49,7 +49,9 @@ export class AppComplexForms extends Component {
   //   }));
   // };
   toggleModal = () => { //? з деструктурізацією
+    console.log("🌀toggleModal");
     this.setState(({ showModal }) => ({
+      
       showModal: !showModal
     }));
   };
@@ -95,7 +97,8 @@ export class AppComplexForms extends Component {
           Відкрити модалку
         </button>
         {showModal &&
-          <Modal>
+          // <Modal>
+          <Modal onClose={this.toggleModal} >
             <h1>Це контент модалки як children</h1>
             <p>Lorem, ipsum dolor sit amet consectetur
               adipisicing elit. Omnis consequatur

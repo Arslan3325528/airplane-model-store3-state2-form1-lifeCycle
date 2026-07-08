@@ -13,7 +13,16 @@ const modalRoot = document.querySelector('#modal-root');  //! для модал�
 export class Modal extends Component {
   componentDidMount() {
     console.log('Modal componentDidMount');
-    // window.addEventListener('keydown', this.handleKeyDown);
+    
+    // window.addEventListener('keydown', event => {
+    //     console.log("event.code:", event.code);
+    //     if (event.code === 'Escape') {
+    //       console.log("Натиснули ❌ESC, потрібно закрити модалку");
+    //       this.props.onClose();
+    //     };
+    //   }
+    // );
+    window.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
@@ -21,13 +30,13 @@ export class Modal extends Component {
     // window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  // handleKeyDown = e => {
-  //   if (e.code === 'Escape') {
-  //     console.log('Нажали ESC, нужно закрыть модалку');
+  handleKeyDown = e => {
+    if (e.code === 'Escape') {
+      console.log("Натиснули ❌ESC, потрібно закрити модалку");
 
-  //     this.props.onClose();
-  //   }
-  // };
+      this.props.onClose();
+    }
+  };
 
   // handleBackdropClick = event => {
   //   // console.log('Кликнули в бекдроп');
