@@ -32,5 +32,5 @@ createRoot(document.getElementById('root')).render(
         <AppComplexForms />
       </ThemeProvider>
     </BrowserRouter>
-  </StrictMode >
+  </StrictMode>
 );

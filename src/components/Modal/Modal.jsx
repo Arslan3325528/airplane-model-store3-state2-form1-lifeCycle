@@ -13,27 +13,30 @@ const modalRoot = document.querySelector('#modal-root');  //! для модал�
 export class Modal extends Component {
   componentDidMount() {
     console.log('1️⃣❗️❗️.Modal componentDidMount');
-    
+    //!: ❌ Для закриття модаки клавішею ESC - так НЕ буде працювати з StrictMode!!!
     // window.addEventListener('keydown', event => {
     //     console.log("event.code:", event.code);
     //     if (event.code === 'Escape') {
     //       console.log("Натиснули ❌ESC, потрібно закрити модалку");
     //       this.props.onClose();
     //     };
-    //   }
-    // );
-    //! Для закриття модаки клавішею ESC 
+    // });
+    
+    //* ✅ Для закриття модаки клавішею ESC - так БУДЕ працювати з StrictMode!!!
     window.addEventListener('keydown', this.handleKeyDownESC);
   };
 
-  componentDidUpdate(prevProps, prevState) { //todo: звичайний метод класу
+  
+  componentDidUpdate(prevProps, prevState) {
     console.log("2️⃣❗️❗️.Modal componentDidUpdate");
   };
 
+
   componentWillUnmount() {
     console.log('3️⃣❗️❗️.Modal componentWillUnmount');
-    // window.removeEventListener('keydown', this.handleKeyDownESC);
-  }
+    window.removeEventListener('keydown', this.handleKeyDownESC);
+  };
+
 
   //! Для закриття модаки клавішею ESC 
   handleKeyDownESC = event => {
@@ -44,7 +47,8 @@ export class Modal extends Component {
     };
   };
 
-  //! Для закриття модаки по клыку в Backdrop
+
+  //! Для закриття модаки по кліку в Backdrop
   // handleBackdropClick = event => {
   //   // console.log('Кликнули в бекдроп');
 
@@ -56,10 +60,11 @@ export class Modal extends Component {
   //   }
   // };
 
+
   render() {
     //! Без createPortal
     // return (  
-    //   <div className={css.modalBackdrop} onClick={this.handleBackdropClick}>
+    //   <div className={css.modalBackdrop}>
     //     <div className={css.modalContent} >{this.props.children}</div>
     //   </div>
     // );
