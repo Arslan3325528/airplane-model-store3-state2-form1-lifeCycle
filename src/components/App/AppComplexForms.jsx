@@ -28,7 +28,7 @@ export class AppComplexForms extends Component {
     formInputLogin: "",
     formInputPassword: "",
     formRadioButtonExperience: "",
-    formRadioButtonAge: "",
+    formSelectAge: "",
     showModal: false, //! контроль відкриття/закриття модального вікна
   };
 
@@ -38,7 +38,7 @@ export class AppComplexForms extends Component {
       formInputLogin: data.inputLogin,
       formInputPassword: data.inputPassword,
       formRadioButtonExperience: data.experience,
-      formRadioButtonAge: data.age
+      formSelectAge: data.age
     });
   };
 
@@ -61,7 +61,7 @@ export class AppComplexForms extends Component {
       formInputLogin,
       formInputPassword,
       formRadioButtonExperience,
-      formRadioButtonAge,
+      formSelectAge,
       showModal, //! контроль відкриття/закриття модального вікна
     } = this.state;
 
@@ -69,7 +69,7 @@ export class AppComplexForms extends Component {
     console.log("✅Значення в App formInputLogin:", formInputLogin);
     console.log("✅Значення в App formInputPassword:", formInputPassword);
     console.log("✅Значення в App formRadioButtonExperience:", formRadioButtonExperience);
-    console.log("✅Значення в App formRadioButtonAge:", formRadioButtonAge);
+    console.log("✅Значення в App formSelectAge:", formSelectAge);
     console.log("❇️Контроль відкриття/закриття модального вікна:", showModal);
     console.log("______________________________________________");
 
