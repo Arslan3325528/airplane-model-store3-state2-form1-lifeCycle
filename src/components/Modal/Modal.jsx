@@ -49,16 +49,16 @@ export class Modal extends Component {
 
 
   //! Для закриття модаки по кліку в Backdrop
-  // handleBackdropClick = event => {
-  //   // console.log('Кликнули в бекдроп');
+  handleBackdropClick = event => {
+    console.log('Клікнули в Backdrop');
 
-  //   // console.log('currentTarget: ', event.currentTarget);
-  //   // console.log('target: ', event.target);
+    console.log('currentTarget: ', event.currentTarget);
+    console.log('target: ', event.target);
 
-  //   if (event.currentTarget === event.target) {
-  //     this.props.onClose();
-  //   }
-  // };
+    if (event.currentTarget === event.target) {
+      this.props.onClose();
+    };
+  };
 
 
   render() {
