@@ -1,14 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent} from 'react';
 import css from "./ColorBoxLifeCycle.module.css";
 
 
 export class ColorBoxLifeCycle extends Component {
+// export class ColorBoxLifeCycle extends PureComponent {
     state = {
         activeButtonIdx: null,
         // selectedButtonsIdx: [], //! масив індексів обраних елементів
         //! 1.localStorage - Ініціалізація state з localStorage
         selectedButtonsIdx: JSON.parse(localStorage.getItem("selectedIdx")) || [], //! масив індексів обраних елементів
     };
+
+    //! shouldComponentUpdate - тільки для демонстрації роботи
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log("🚹❗️.shouldComponentUpdate");
+    //     console.log("🎯nextState.activeButtonIdx:", nextState.activeButtonIdx);
+    //     console.log("🎯this.state.activeButtonIdx:", this.state.activeButtonIdx);
+    //     console.log("🎯🎯Оновлення компонента", !!(nextState.activeButtonIdx !== this.state.activeButtonIdx));
+    //     return nextState.activeButtonIdx !== this.state.activeButtonIdx;
+    // };
 
     //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
     componentDidMount() { //todo: звичайний метод класу

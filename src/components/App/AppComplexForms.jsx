@@ -91,13 +91,13 @@ export class AppComplexForms extends Component {
         {/*//! Модальне вікно */}
         {/* <Modal /> */}
         {/* {showModal && <Modal />} */}
-        {/* <button
+        <button
           type="button"
           onClick={this.toggleModal}
         >
           Відкрити модалку
-        </button> */}
-        {/* {showModal &&
+        </button>
+        {showModal &&
           // <Modal>
           <Modal onClose={this.toggleModal} >
             <h1>Це контент модалки як children</h1>
@@ -115,17 +115,17 @@ export class AppComplexForms extends Component {
             >
               Закрити модалку
             </button>
-          </Modal>} */}
+          </Modal>}
         {/*//! Color Boxes */}
-        {/* <ColorBoxLifeCycle colorBoxes={colorBoxOptions} /> */}
+        <ColorBoxLifeCycle colorBoxes={colorBoxOptions} />
         {/*//! Таймер */}
-        <button
+        {/* <button
           type="button"
           onClick={this.toggleModal}
         >
           Старт/Стоп таймер
-        </button>
-        {showModal &&<Clock />}
+        </button> */}
+        {/* {showModal &&<Clock />} */}
       </>
     );
   }
