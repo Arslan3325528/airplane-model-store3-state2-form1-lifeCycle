@@ -19,7 +19,7 @@ import {
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <BrowserRouter basename="/airplane-model-store3-state2-form1-lifeCycle">
       <ThemeProvider theme={theme}>
         {/* <App /> */}
@@ -32,5 +32,5 @@ createRoot(document.getElementById('root')).render(
         <AppComplexForms />
       </ThemeProvider>
     </BrowserRouter>
-  </StrictMode>
+  // </StrictMode>
 );

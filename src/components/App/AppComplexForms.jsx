@@ -10,6 +10,7 @@ import { ComplexFormsGenerationIDRadioButton } from '@/components/ComplexFormsGe
 import { ComplexFormsGenerationIDRadioButtonCheckboxesSelect } from '@/components/ComplexFormsGenerationIDRadioButtonCheckboxesSelect/ComplexFormsGenerationIDRadioButtonCheckboxesSelect.jsx';
 import { Modal } from '@/components/Modal/Modal.jsx';
 import { ColorBoxLifeCycle } from '@/components/ColorBoxLifeCycle/ColorBoxLifeCycle.jsx';
+import { Clock} from '@/components/Clock/Clock.jsx';
 // import css from "./AppComplexForms.module.css";
 
 const colorBoxOptions = [
@@ -90,13 +91,13 @@ export class AppComplexForms extends Component {
         {/*//! Модальне вікно */}
         {/* <Modal /> */}
         {/* {showModal && <Modal />} */}
-        <button
+        {/* <button
           type="button"
           onClick={this.toggleModal}
         >
           Відкрити модалку
-        </button>
-        {showModal &&
+        </button> */}
+        {/* {showModal &&
           // <Modal>
           <Modal onClose={this.toggleModal} >
             <h1>Це контент модалки як children</h1>
@@ -114,8 +115,17 @@ export class AppComplexForms extends Component {
             >
               Закрити модалку
             </button>
-          </Modal>}
-        <ColorBoxLifeCycle colorBoxes={colorBoxOptions} />
+          </Modal>} */}
+        {/*//! Color Boxes */}
+        {/* <ColorBoxLifeCycle colorBoxes={colorBoxOptions} /> */}
+        {/*//! Таймер */}
+        <button
+          type="button"
+          onClick={this.toggleModal}
+        >
+          Старт/Стоп таймер
+        </button>
+        {showModal &&<Clock />}
       </>
     );
   }

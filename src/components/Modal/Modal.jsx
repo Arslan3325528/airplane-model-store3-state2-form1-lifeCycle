@@ -62,6 +62,7 @@ export class Modal extends Component {
 
 
   render() {
+    console.log("0️⃣❗️❗️.Modal render");
     //! Без createPortal
     // return (  
     //   <div className={css.modalBackdrop}>
