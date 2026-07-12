@@ -52,7 +52,6 @@ export class AppComplexForms extends Component {
   toggleModal = () => { //? з деструктурізацією
     console.log("🌀toggleModal");
     this.setState(({ showModal }) => ({
-      
       showModal: !showModal
     }));
   };
