@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import debounce from "lodash.debounce";
 
+import { ModalRegistrationIdentification } from '@/components/ModalRegistrationIdentification/ModalRegistrationIdentification.jsx';
 import { ScaleSelection } from '@/components/ScaleSelection/ScaleSelection.jsx';
 import { Filter } from '@/components/Filter/Filter.jsx';
 import { Sorter } from '@/components/Sorter/Sorter.jsx';
@@ -55,7 +56,8 @@ export class App extends Component {
     radioButtonValue: "brief", //! значення параметра для пошуку/фільтрації радіо-кнопки
     inputSearchPlaceholder: "Введіть назву ЛА", //! значення placeholder для inputSearch
     inputSearchValueTrigger: false, //! тригер для коректної роботи інпуту після очищення
-    modelsSelectedScale: aircrafts //! масив моделей обраного масштабу
+    modelsSelectedScale: aircrafts, //! масив моделей обраного масштабу
+    showModal: true, //! контроль відкриття/закриття модального вікна
   };
 
   //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
@@ -477,7 +479,16 @@ export class App extends Component {
       inputSearchValue: "", //! значення inputSearch
     });
   };
-    
+
+  //! Відкриття/закриття модального вікна
+  toggleModal = () => { 
+    console.log("🌀toggleModal");
+    this.setState(({ showModal }) => ({
+      showModal: !showModal
+    }));
+  };
+
+
   render() {
     const {
       aircraftsArr,
@@ -493,6 +504,7 @@ export class App extends Component {
       inputSearchPlaceholder, //! значення placeholder для inputSearch
       inputSearchValueTrigger, //! тригер для коректної роботи інпуту після очищення
       modelsSelectedScale, //! масив моделей обраного масштабу
+      showModal, //! контроль відкриття/закриття модального вікна
     } = this.state;
 
     //! Рахуємо кількість типів ЛА
@@ -529,10 +541,34 @@ export class App extends Component {
     console.log("⭕️Значення параметра для пошуку/фільтрації радіо-кнопки:", radioButtonValue);
     console.log("🔲Значення placeholder для inputSearch:", inputSearchPlaceholder);
     console.log("📕📗Масив моделей обраного масштабу:", modelsSelectedScale);
+    console.log("🌀контроль відкриття/закриття модального вікна:", showModal);
     console.log("______________________________________________");
 
     return (
       <>
+        {/*//!  Модалка Реєстрації та Ідентифікації/Аутентифікації користувача */}
+        {showModal &&
+          < ModalRegistrationIdentification
+            onClose={this.toggleModal}
+          >
+            <h1>Реєстрація та Ідентифікація/Аутентифікація</h1>
+            <p>Модалка Реєстрації та Ідентифікації/Аутентифікації користувача</p>
+            <div>
+              <button
+                type="button"
+                onClick={this.toggleModal}
+              >
+                Реєстрація
+              </button>
+              <button
+                type="button"
+                onClick={this.toggleModal}
+              >
+                Ідентифікація
+              </button>
+            </div>
+          </ModalRegistrationIdentification>}
+
         {/*//!  Вибір масштабу моделі */}
         <ScaleSelection
           aircrafts={aircrafts} //! ппочатково сортований вхідний масив УСІХ моделей
