@@ -1,0 +1,194 @@
+import React, { Component } from "react";
+// import { nanoid } from 'nanoid' //! для генерації Id елементів форми
+import css from "./FormRegistration.module.css";
+
+const INITIAL_STATE = {
+    userName: "",
+    userEmail: "",
+    userPassword: "",
+    userExperience: "disciple",
+    userAge: "",
+    userLicence: false
+};
+
+
+export class FormRegistration extends Component {
+    state = { ...INITIAL_STATE };
+
+    //! Для генерації Id елементів форми:
+    //! Для кожного інпуту робимо окрему властивість класу:
+    // loginInputId = nanoid();
+    // passwordInputId = nanoid();
+
+    //! Скидання state в початкове значення INITIAL_STATE
+    reset = () => {
+        this.setState({ ...INITIAL_STATE });
+    };
+
+    // todo: NEW
+    handleSubmit = event => {
+        event.preventDefault();
+        // const { userName, userEmail, userPassword } = this.state;
+        // console.log(`Name: ${userName}, ✉️E-mail: ${userEmail},🈳Password: ${userPassword}`);
+        this.props.onSubmit({ ...this.state }); //! підняття стану + передача state в App.jsx
+        this.reset();  //! очищуємо поля всіх інпутів
+        this.props.onClose(); //! Закриваємо модалку
+    };
+
+    handleChange = event => {
+        // console.log("event.currentTarget:", event.currentTarget);
+        // console.log("event.currentTarget.name:", event.currentTarget.name);
+        // console.log("event.currentTarget.value:", event.currentTarget.value);
+
+        //! Деструктуризуємо:
+        const { name, value } = event.currentTarget;
+        //! Зберігаємо значення інпутів в state, використовуючи властивості об'єкта, що обчислюються
+        this.setState({
+            [name]: value,
+        });
+    };
+
+    handleChangeCheckbox = event => {
+        console.log("event.currentTarget.checked:", event.currentTarget.checked);
+
+        //! Деструктуризуємо:
+        const { checked } = event.currentTarget;
+
+        this.setState({ userLicence: checked });
+    };
+
+
+    render() {
+        const {
+            userName,
+            userEmail,
+            userPassword,
+            userExperience,
+            userAge,
+            userLicence
+        } = this.state;
+
+        console.log("------------STATE FormRegistration------------");
+        console.log("🛅Значення userName:", userName);
+        console.log("🛅Значення userEmail:", userEmail);
+        console.log("🛅Значення userPassword:", userPassword);
+        console.log("🛅Значення userExperience:", userExperience);
+        console.log("🛅Значення userAge:", userAge);
+        console.log("🛅Значення userLicence:", userLicence);
+        console.log("______________________________________________");
+
+        return (
+            <>
+                <h2>Реєстрація</h2>
+                <form
+                    className={css.loginForm}
+                    onSubmit={this.handleSubmit}
+                >
+                    <label className={css.loginFormLabel}>
+                        Ім'я:
+                        <input
+                            className={css.loginFormInput}
+                            type="text"
+                            name="userName"
+                            value={userName}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+
+                    <label className={css.loginFormLabel}>
+                        E-mail:
+                        <input
+                            className={css.loginFormInput}
+                            type="email"
+                            name="userEmail"
+                            value={userEmail}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    
+
+                    <label className={css.loginFormLabel}>
+                        Пароль:
+                        <input
+                            className={css.loginFormInput}
+                            type="password"
+                            name="userPassword"
+                            value={userPassword}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    
+
+                    <h3>Ваш досвід:</h3>
+                    <label>
+                        Учень
+                        <input
+                            type="radio"
+                            name="userExperience"
+                            value="disciple"
+                            checked={userExperience === "disciple"}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+
+                    <label>
+                        Майстер
+                        <input
+                            type="radio"
+                            name="userExperience"
+                            value="master"
+                            checked={userExperience === "master"}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+
+                    <label>
+                        Гуру
+                        <input
+                            type="radio"
+                            name="userExperience"
+                            value="guru"
+                            checked={userExperience === "guru"}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+
+                    <h3>Ваш вік:</h3>
+                    <label>
+                        {/* Ваш вік */}
+                        <select
+                            name="userAge"
+                            value={userAge}
+                            onChange={this.handleChange}
+                        >
+                            <option value="" disabled>...</option>
+                            <option value="18-25">18-25</option>
+                            <option value="26-35">26-35</option>
+                            <option value="36+">36+</option>
+                        </select>
+                    </label>
+
+                    {/*//! Згоден з умовами */}
+                    <label>
+                        Згоден з умовами
+                        <input
+                            type="checkbox"
+                            name="userLicence"
+                            checked={userLicence}
+                            onChange={this.handleChangeCheckbox}
+                        />
+                    </label>
+
+                    <button
+                        className={css.loginButton}
+                        type="submit"
+                        disabled={!userLicence} //! блокування кнопки чекбоксом
+                    >
+                        Submit
+                    </button>
+                </form>
+            </>
+            
+        );
+    }
+};
