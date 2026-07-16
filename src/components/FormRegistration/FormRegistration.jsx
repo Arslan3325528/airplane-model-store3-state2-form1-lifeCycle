@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { nanoid } from 'nanoid' //! для генерації Id елементів форми
 import css from "./FormRegistration.module.css";
 
 const INITIAL_STATE = {
@@ -15,11 +14,6 @@ const INITIAL_STATE = {
 export class FormRegistration extends Component {
     state = { ...INITIAL_STATE };
 
-    //! Для генерації Id елементів форми:
-    //! Для кожного інпуту робимо окрему властивість класу:
-    // loginInputId = nanoid();
-    // passwordInputId = nanoid();
-
     //! Скидання state в початкове значення INITIAL_STATE
     reset = () => {
         this.setState({ ...INITIAL_STATE });
@@ -32,13 +26,13 @@ export class FormRegistration extends Component {
         // console.log(`Name: ${userName}, ✉️E-mail: ${userEmail},🈳Password: ${userPassword}`);
         this.props.onSubmit({ ...this.state }); //! підняття стану + передача state в App.jsx
         this.reset();  //! очищуємо поля всіх інпутів
-        this.props.onClose(); //! Закриваємо модалку
+        this.props.onClose(); //! закриваємо модалку
     };
 
     handleChange = event => {
-        // console.log("event.currentTarget:", event.currentTarget);
-        // console.log("event.currentTarget.name:", event.currentTarget.name);
-        // console.log("event.currentTarget.value:", event.currentTarget.value);
+        // console.log("event.currentTarget:", event.currentTarget); //!
+        // console.log("event.currentTarget.name:", event.currentTarget.name); //!
+        // console.log("event.currentTarget.value:", event.currentTarget.value); //!
 
         //! Деструктуризуємо:
         const { name, value } = event.currentTarget;
@@ -49,11 +43,10 @@ export class FormRegistration extends Component {
     };
 
     handleChangeCheckbox = event => {
-        console.log("event.currentTarget.checked:", event.currentTarget.checked);
-
+        // console.log("event.currentTarget.checked:", event.currentTarget.checked); //!
         //! Деструктуризуємо:
         const { checked } = event.currentTarget;
-
+        //! Зберігаємо значення checked в state
         this.setState({ userLicence: checked });
     };
 
