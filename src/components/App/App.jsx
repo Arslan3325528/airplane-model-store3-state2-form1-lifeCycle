@@ -45,7 +45,7 @@ export class App extends Component {
     aircraftsTitle: "Магазин моделей літальних апаратів",
     activeButton: "allButton", //! візуалізація активної кнопки
     // indicesSelectedModels: [], //! масив індексів обраних моделей
-    //! 1.localStorage - Ініціалізація state з localStorage
+    //! 1.localStorage - Ініціалізація state.indicesSelectedModels з localStorage
     indicesSelectedModels: JSON.parse(localStorage.getItem("indicesSelectedModels")) || [], //! масив індексів обраних моделей
     // selectedModels: [], //! масив обраних моделей
     selectedModels: (JSON.parse(localStorage.getItem("indicesSelectedModels")) || []).flatMap(id =>
@@ -60,19 +60,37 @@ export class App extends Component {
     inputSearchValueTrigger: false, //! тригер для коректної роботи інпуту після очищення
     modelsSelectedScale: aircrafts, //! масив моделей обраного масштабу
     showModal: true, //! контроль відкриття/закриття модального вікна
-    users: [], //! масив з даними користувачів
+    // users: [], //! масив з даними користувачів
+    //! 1.localStorage - Ініціалізація state.users з localStorage
+    users: JSON.parse(localStorage.getItem("users")) || [], //! масив з даними користувачів
+    activeUser: null //! 🗣 активний (авторизований) користувач:
   };
 
   //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
   componentDidMount() {
+    //todo: indicesSelectedModels
     const saved = localStorage.getItem("indicesSelectedModels");
     if (!saved) {
       localStorage.setItem("indicesSelectedModels", JSON.stringify([]));
+    };
+
+    // colorPickerOptions1.find(option => option.label === "blue"));
+    //todo: users
+    // let activeUser = {};
+    const users = localStorage.getItem("users");
+    if (!users) {
+      localStorage.setItem("users", JSON.stringify([]));
+    } else if (JSON.parse(users).length) {
+      // console.log("❗️❗️❗️JSON.parse(users).length:", JSON.parse(users).length); //!
+      const activeUser = JSON.parse(users).find(user => user.isActive === true);
+      console.log("🗣 Активний(авторизований) користувач:", activeUser); //!
+      if (activeUser) this.setState({ activeUser })
     };
   };
 
   //! 3.localStorage - Оновлення(синхронізація) localStorage при кожній зміні indicesSelectedModels
   componentDidUpdate(prevProps, prevState) {
+    //todo: indicesSelectedModels
     if (prevState.indicesSelectedModels !== this.state.indicesSelectedModels) {
       localStorage.setItem("indicesSelectedModels", JSON.stringify(this.state.indicesSelectedModels));
       this.setState({
@@ -80,6 +98,11 @@ export class App extends Component {
           aircrafts.filter((el) => id === el.id))
           .sort((a, b) => a.name.brief.localeCompare(b.name.brief)) //! з сортуванням за полем "name.brief"
       });
+    };
+
+    //todo: users
+    if (prevState.users !== this.state.users) {
+      localStorage.setItem("users", JSON.stringify(this.state.users));
     };
   };
 
@@ -502,6 +525,21 @@ export class App extends Component {
     }));
   };
 
+  //! Завершення сеансу облікового запису
+  signOut = () => {
+    console.log("⬇️Sign Out");
+    const users = JSON.parse(localStorage.getItem("users"));
+    const activeUser = users.find(user => user.isActive === true);
+    // console.log("🗣 🗣 🗣 Активний(авторизований) користувач:", activeUser); //!
+    activeUser.isActive = false;
+    // console.log("users:", users); //!
+    localStorage.setItem("users", JSON.stringify(users));
+    this.setState({
+      users,
+      activeUser: null
+    });
+  };
+
 
   render() {
     const {
@@ -520,6 +558,7 @@ export class App extends Component {
       modelsSelectedScale, //! масив моделей обраного масштабу
       showModal, //! контроль відкриття/закриття модального вікна
       users, //!  масив з даними користувачів
+      activeUser, //! 🗣 активний (авторизований) користувач:
     } = this.state;
 
     //! Рахуємо кількість типів ЛА
@@ -557,13 +596,14 @@ export class App extends Component {
     console.log("🔲Значення placeholder для inputSearch:", inputSearchPlaceholder);
     console.log("📕📗Масив моделей обраного масштабу:", modelsSelectedScale);
     console.log("🌀 Контроль відкриття/закриття модального вікна:", showModal);
-    console.log("👤 Масив з даними користувачів:", users);
+    console.log("👨‍👩‍👦‍👦 Масив з даними користувачів:", users);
+    console.log("🗣 Активний (авторизований) користувач:", activeUser);
     console.log("______________________________________________");
 
     return (
       <>
         {/*//!  Модалка Реєстрації та Ідентифікації/Аутентифікації користувача */}
-        {showModal &&
+        {showModal && !activeUser &&
           < ModalRegistrationIdentification
             onClose={this.toggleModal}
           >
@@ -593,7 +633,9 @@ export class App extends Component {
         
         {/*//!  Реєстрація та Ідентифікація/Аутентифікація користувача */}
         <RegistrationIdentification
-          onClose={this.toggleModal}
+          onClose={this.toggleModal} //! відкриття/закриття модального вікна
+          activeUser={activeUser} //! 🗣 активний (авторизований) користувач:
+          onSignOut={this.signOut} //! завершення сеансу облікового запису
         />
         
         {/*//!  Вибір масштабу моделі */}

@@ -22,9 +22,23 @@ export class FormRegistration extends Component {
     // todo: NEW
     handleSubmit = event => {
         event.preventDefault();
-        // const { userName, userEmail, userPassword } = this.state;
+        //! isActive - це тригер 🗣 активного (авторизованого) користувача
+        const { userName, userEmail, userPassword, userExperience, userAge, isActive = false } = this.state;
+        
         // console.log(`Name: ${userName}, ✉️E-mail: ${userEmail},🈳Password: ${userPassword}`);
-        this.props.onSubmit({ ...this.state }); //! підняття стану + передача state в App.jsx
+        //! Перевірка на унікальність userEmail
+        const users = JSON.parse(localStorage.getItem("users"));
+        const isEmaiNotlUnique = users.some(user => user.userEmail === userEmail);
+        console.log("📩Email не унікальний?:", isEmaiNotlUnique); //!
+        
+        if (isEmaiNotlUnique) {
+            alert(`❗️Користувач з E-mail: ${userEmail} вже існує`);
+            console.log(`❗️Користувач з E-mail: ${userEmail} вже існує`);
+            return;
+        };
+
+        // this.props.onSubmit({ ...this.state }); //! підняття стану + передача state в App.jsx
+        this.props.onSubmit({ userName, userEmail, userPassword, userExperience, userAge, isActive }); //! підняття стану + передача частини state в App.jsx
         this.reset();  //! очищуємо поля всіх інпутів
         this.props.onClose(); //! закриваємо модалку
     };
