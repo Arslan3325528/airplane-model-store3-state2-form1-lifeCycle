@@ -511,8 +511,15 @@ export class App extends Component {
   };
 
   //! Відкриття/закриття модального вікна
-  toggleModal = (textContent) => { 
-    console.log("🌀toggleModal:", textContent)
+  toggleModal = (event) => {
+    console.log("🌀toggleModal:", event)
+    //! Перевірка: яка кнопка була натиснута - Registration або Identification або Backdrop або ESC(undefined)
+    const modalType = 
+      event
+        ? event.currentTarget.textContent
+        : undefined
+    
+    console.log("modalType:", modalType)
     
     this.setState(({ showModal }) => ({
       showModal: !showModal

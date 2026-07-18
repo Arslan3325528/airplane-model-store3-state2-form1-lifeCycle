@@ -33,8 +33,8 @@ export function RegistrationIdentification({
             className={css.buttonRegistration}
             type="button"
             // onClick={() => console.log('Клік в "Registration"')}
-            // onClick={onClose}
-            onClick={(event) => onClose(event.currentTarget.textContent)}
+            onClick={onClose}
+            // onClick={(event) => onClose(event.currentTarget.textContent)}
           >
             Registration
           </button>
@@ -45,8 +45,8 @@ export function RegistrationIdentification({
             className={css.buttonIdentification}
             type="button"
             // onClick={() => console.log('Клік в "Identification"')}
-            // onClick={onClose}
-            onClick={(event) => onClose(event.currentTarget.textContent)}
+            onClick={onClose}
+            // onClick={(event) => onClose(event.currentTarget.textContent)}
           >
             Identification
           </button>
