@@ -74,7 +74,6 @@ export class App extends Component {
       localStorage.setItem("indicesSelectedModels", JSON.stringify([]));
     };
 
-    // colorPickerOptions1.find(option => option.label === "blue"));
     //todo: users
     // let activeUser = {};
     const users = localStorage.getItem("users");
@@ -83,8 +82,13 @@ export class App extends Component {
     } else if (JSON.parse(users).length) {
       // console.log("❗️❗️❗️JSON.parse(users).length:", JSON.parse(users).length); //!
       const activeUser = JSON.parse(users).find(user => user.isActive === true);
-      console.log("🗣 Активний(авторизований) користувач:", activeUser); //!
-      if (activeUser) this.setState({ activeUser })
+      console.log("componentDidMount🗣 Активний(авторизований) користувач:", activeUser); //!
+      if (activeUser) {
+        this.setState({
+          showModal: false,
+          activeUser,
+        })
+      };
     };
   };
 
@@ -507,8 +511,9 @@ export class App extends Component {
   };
 
   //! Відкриття/закриття модального вікна
-  toggleModal = () => { 
-    console.log("🌀toggleModal");
+  toggleModal = (textContent) => { 
+    console.log("🌀toggleModal:", textContent)
+    
     this.setState(({ showModal }) => ({
       showModal: !showModal
     }));
@@ -535,6 +540,7 @@ export class App extends Component {
     // console.log("users:", users); //!
     localStorage.setItem("users", JSON.stringify(users));
     this.setState({
+      showModal: true,
       users,
       activeUser: null
     });
@@ -603,7 +609,8 @@ export class App extends Component {
     return (
       <>
         {/*//!  Модалка Реєстрації та Ідентифікації/Аутентифікації користувача */}
-        {showModal && !activeUser &&
+        {/* {showModal && !activeUser &&} */}
+        { showModal &&
           < ModalRegistrationIdentification
             onClose={this.toggleModal}
           >

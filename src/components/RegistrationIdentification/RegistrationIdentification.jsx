@@ -28,23 +28,29 @@ export function RegistrationIdentification({
         </button>
         }
 
-        {!activeUser && <button
-          className={css.buttonRegistration}
-          type="button"
-          // onClick={() => console.log('Клік в "Registration"')}
-          onClick={onClose}
-        >
-          Registration
-        </button>
+        {!activeUser &&
+          <button
+            className={css.buttonRegistration}
+            type="button"
+            // onClick={() => console.log('Клік в "Registration"')}
+            // onClick={onClose}
+            onClick={(event) => onClose(event.currentTarget.textContent)}
+          >
+            Registration
+          </button>
         }
 
-        {/* <button
-          className={css.buttonIdentification}
-          type="button"
-          onClick={() => console.log('Клік в "Identification"')}
-        >
-          Identification
-        </button> */}
+        {!activeUser &&
+          <button
+            className={css.buttonIdentification}
+            type="button"
+            // onClick={() => console.log('Клік в "Identification"')}
+            // onClick={onClose}
+            onClick={(event) => onClose(event.currentTarget.textContent)}
+          >
+            Identification
+          </button>
+        }
 
       </div>
     </div>
