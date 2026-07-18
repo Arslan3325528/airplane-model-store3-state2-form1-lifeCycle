@@ -188,6 +188,14 @@ export class FormRegistration extends Component {
 
                     <button
                         className={css.loginButton}
+                        type="button"
+                        onClick={this.props.onClose}
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        className={css.loginButton}
                         type="submit"
                         disabled={!userLicence} //! блокування кнопки чекбоксом
                     >

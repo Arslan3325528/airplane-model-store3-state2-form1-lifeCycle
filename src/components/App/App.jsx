@@ -4,6 +4,7 @@ import debounce from "lodash.debounce";
 import { ModalRegistrationIdentification } from '@/components/ModalRegistrationIdentification/ModalRegistrationIdentification.jsx';
 import { RegistrationIdentification } from '@/components/RegistrationIdentification/RegistrationIdentification.jsx';
 import { FormRegistration } from '@/components/FormRegistration/FormRegistration.jsx';
+import { FormIdentification} from '@/components/FormIdentification/FormIdentification.jsx';
 import { ScaleSelection } from '@/components/ScaleSelection/ScaleSelection.jsx';
 import { Filter } from '@/components/Filter/Filter.jsx';
 import { Sorter } from '@/components/Sorter/Sorter.jsx';
@@ -537,6 +538,28 @@ export class App extends Component {
     }));
   };
 
+  //! Вхід в обліковий запис
+  accountLogin = ({userEmail}) => {
+    console.log("🙆‍♂️Вхід в обліковий запис:", userEmail); //!
+    const users = JSON.parse(localStorage.getItem("users"));
+    const activeUser = users.find(user => user.userEmail === userEmail);
+    console.log("🗣 🗣 🗣 Активний(авторизований) користувач:", activeUser); //!
+    activeUser.isActive = true;
+    console.log("users:", users); //!
+    localStorage.setItem("users", JSON.stringify(users));
+    this.setState({
+      // showModal: !this.state.showModal, //todo: var.2 закриваємо модалку  
+      users,
+      activeUser
+    });
+    // this.toggleModal(); //todo: var.3 закриваємо модалку  
+  };
+
+  //! Форма входу в обліковий запис
+  // signIn = () => {
+  //   console.log("⬆️Sign In");
+  // };
+
   //! Завершення сеансу облікового запису
   signOut = () => {
     console.log("⬇️Sign Out");
@@ -547,10 +570,11 @@ export class App extends Component {
     // console.log("users:", users); //!
     localStorage.setItem("users", JSON.stringify(users));
     this.setState({
-      showModal: true,
+      // showModal: true, //todo: var.2 відкриваємо модалку
       users,
       activeUser: null
     });
+    this.toggleModal(); //todo: var.3 відкриваємо модалку
   };
 
 
@@ -639,9 +663,15 @@ export class App extends Component {
                 </button>
               </div>
             </div> */}
-            <FormRegistration
+            {/*//!  Форма Реєстрації користувача */}
+            {/* <FormRegistration
               onClose={this.toggleModal}
               onSubmit={this.submitForm}
+            /> */}
+            {/*//!  Форма Ідентифікації/Аутентифікації користувача */}
+            <FormIdentification
+              onClose={this.toggleModal}
+              onAccountLogin={this.accountLogin}
             />
           </ModalRegistrationIdentification>}
         
