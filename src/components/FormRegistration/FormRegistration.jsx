@@ -40,7 +40,7 @@ export class FormRegistration extends Component {
         // this.props.onSubmit({ ...this.state }); //! підняття стану + передача state в App.jsx
         this.props.onSubmit({ userName, userEmail, userPassword, userExperience, userAge, isActive }); //! підняття стану + передача частини state в App.jsx
         this.reset();  //! очищуємо поля всіх інпутів
-        this.props.onClose(); //! закриваємо модалку
+        // this.props.onClose(); //! закриваємо модалку
     };
 
     handleChange = event => {
@@ -188,18 +188,18 @@ export class FormRegistration extends Component {
 
                     <button
                         className={css.loginButton}
-                        type="button"
-                        onClick={this.props.onClose}
-                    >
-                        Cancel
-                    </button>
-
-                    <button
-                        className={css.loginButton}
                         type="submit"
                         disabled={!userLicence} //! блокування кнопки чекбоксом
                     >
                         Submit
+                    </button>
+
+                    <button
+                        className={css.loginButton}
+                        type="button"
+                        onClick={this.props.onClose}
+                    >
+                        Cancel
                     </button>
                 </form>
             </>

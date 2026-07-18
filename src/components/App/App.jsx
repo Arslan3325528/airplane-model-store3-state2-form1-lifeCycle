@@ -3,6 +3,7 @@ import debounce from "lodash.debounce";
 
 import { ModalRegistrationIdentification } from '@/components/ModalRegistrationIdentification/ModalRegistrationIdentification.jsx';
 import { RegistrationIdentification } from '@/components/RegistrationIdentification/RegistrationIdentification.jsx';
+import { FormChoiceRegistrationOrIdentification } from '@/components/FormChoiceRegistrationOrIdentification/FormChoiceRegistrationOrIdentification.jsx';
 import { FormRegistration } from '@/components/FormRegistration/FormRegistration.jsx';
 import { FormIdentification} from '@/components/FormIdentification/FormIdentification.jsx';
 import { ScaleSelection } from '@/components/ScaleSelection/ScaleSelection.jsx';
@@ -64,7 +65,8 @@ export class App extends Component {
     // users: [], //! масив з даними користувачів
     //! 1.localStorage - Ініціалізація state.users з localStorage
     users: JSON.parse(localStorage.getItem("users")) || [], //! масив з даними користувачів
-    activeUser: null //! 🗣 активний (авторизований) користувач:
+    activeUser: null, //! 🗣 активний (авторизований) користувач
+    modalType: "",  //! 🧾 індикатор типу модального вікна
   };
 
   //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
@@ -522,9 +524,21 @@ export class App extends Component {
     
     console.log("modalType:", modalType)
     
-    this.setState(({ showModal }) => ({
-      showModal: !showModal
-    }));
+    // this.setState(({ showModal }) => ({
+    //   showModal: !showModal,
+    // }));
+
+    if (modalType === "Registration" || modalType === "Identification") {
+      this.setState({
+        modalType,
+        showModal: true,
+      });
+    } else {
+      this.setState(({ showModal }) => ({
+        showModal: !showModal,
+        modalType: ""
+      }));
+    };
   };
 
   //! Приймаємо об'ект з даних користувача з форми Реєстрації
@@ -536,6 +550,10 @@ export class App extends Component {
     this.setState(prevState => ({
       users: [...prevState.users, data]
     }));
+    this.setState({
+      modalType: "Identification",
+      // showModal: true,
+    });
   };
 
   //! Вхід в обліковий запис
@@ -595,7 +613,8 @@ export class App extends Component {
       modelsSelectedScale, //! масив моделей обраного масштабу
       showModal, //! контроль відкриття/закриття модального вікна
       users, //!  масив з даними користувачів
-      activeUser, //! 🗣 активний (авторизований) користувач:
+      activeUser, //! 🗣 активний (авторизований) користувач
+      modalType, //! 🧾 індикатор типу модального вікна
     } = this.state;
 
     //! Рахуємо кількість типів ЛА
@@ -635,6 +654,7 @@ export class App extends Component {
     console.log("🌀 Контроль відкриття/закриття модального вікна:", showModal);
     console.log("👨‍👩‍👦‍👦 Масив з даними користувачів:", users);
     console.log("🗣 Активний (авторизований) користувач:", activeUser);
+    console.log("🧾 Індикатор типу модального вікна:", modalType);
     console.log("______________________________________________");
 
     return (
@@ -663,22 +683,34 @@ export class App extends Component {
                 </button>
               </div>
             </div> */}
+            {/*//!  Екран вибору Реєстрації або Ідентифікації/Аутентифікації користувача */}
+            {!modalType &&
+              <FormChoiceRegistrationOrIdentification
+                onClose={this.toggleModal}
+                onSubmit={this.submitForm}
+              />
+            }
             {/*//!  Форма Реєстрації користувача */}
-            {/* <FormRegistration
-              onClose={this.toggleModal}
-              onSubmit={this.submitForm}
-            /> */}
+            {modalType === "Registration" &&
+              <FormRegistration
+                onClose={this.toggleModal}
+                onSubmit={this.submitForm}
+              />
+            }
             {/*//!  Форма Ідентифікації/Аутентифікації користувача */}
-            <FormIdentification
-              onClose={this.toggleModal}
-              onAccountLogin={this.accountLogin}
-            />
-          </ModalRegistrationIdentification>}
+            {modalType === "Identification" &&
+              <FormIdentification
+                onClose={this.toggleModal}
+                onAccountLogin={this.accountLogin}
+              />
+            }
+          </ModalRegistrationIdentification>
+        }
         
         {/*//!  Реєстрація та Ідентифікація/Аутентифікація користувача */}
         <RegistrationIdentification
           onClose={this.toggleModal} //! відкриття/закриття модального вікна
-          activeUser={activeUser} //! 🗣 активний (авторизований) користувач:
+          activeUser={activeUser} //! 🗣 активний (авторизований) користувач
           onSignOut={this.signOut} //! завершення сеансу облікового запису
         />
         
