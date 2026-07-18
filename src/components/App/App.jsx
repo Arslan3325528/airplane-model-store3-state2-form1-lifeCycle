@@ -530,8 +530,8 @@ export class App extends Component {
 
     if (modalType === "Registration" || modalType === "Identification") {
       this.setState({
-        modalType,
         showModal: true,
+        modalType,
       });
     } else {
       this.setState(({ showModal }) => ({
@@ -544,16 +544,16 @@ export class App extends Component {
   //! Приймаємо об'ект з даних користувача з форми Реєстрації
   submitForm = (data) => {
     // console.log("✅Дані користувач:", data);
+
     // this.setState({
     //   userData: data
     // });
+
     this.setState(prevState => ({
-      users: [...prevState.users, data]
-    }));
-    this.setState({
-      modalType: "Identification",
       // showModal: true,
-    });
+      users: [...prevState.users, data],
+      modalType: "Identification",
+    }));
   };
 
   //! Вхід в обліковий запис
@@ -572,11 +572,6 @@ export class App extends Component {
     });
     // this.toggleModal(); //todo: var.3 закриваємо модалку  
   };
-
-  //! Форма входу в обліковий запис
-  // signIn = () => {
-  //   console.log("⬆️Sign In");
-  // };
 
   //! Завершення сеансу облікового запису
   signOut = () => {
