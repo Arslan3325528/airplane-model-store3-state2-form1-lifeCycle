@@ -167,12 +167,6 @@ input[type="checkbox"] {
 
 
 /*! Валідація інпутів */
-/*! Якщо поле заповнено неправильно */
-input:invalid,
-select:invalid {
-    border-color: #f44336;
-}
-
 /*todo Підсвічування обов'язкових полів */
 input:required,
 select:required {
@@ -183,4 +177,10 @@ select:required {
 input:valid,
 select:valid {
     border-color: #4caf50;
+}
+
+/*! Якщо поле заповнено неправильно */
+input:invalid,
+select:invalid {
+    background-color: #fff5e5;
 }
