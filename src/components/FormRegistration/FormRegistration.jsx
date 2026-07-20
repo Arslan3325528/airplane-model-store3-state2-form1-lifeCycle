@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     userName: "",
     userEmail: "",
     userPassword: "",
-    userExperience: "disciple",
+    userExperience: "",
     userAge: "",
     userLicence: false
 };
@@ -86,11 +86,12 @@ export class FormRegistration extends Component {
 
         return (
             <>
-                <h2>Реєстрація</h2>
+                <h2 className={css.loginFormTitle}>Реєстрація</h2>
                 <form
                     className={css.loginForm}
                     onSubmit={this.handleSubmit}
                 >
+                    {/*//! Ім'я, E-mail, Пароль (input) */}
                     <label className={css.loginFormLabel}>
                         Ім'я:
                         <input
@@ -98,6 +99,7 @@ export class FormRegistration extends Component {
                             type="text"
                             name="userName"
                             value={userName}
+                            required
                             onChange={this.handleChange}
                         />
                     </label>
@@ -109,6 +111,7 @@ export class FormRegistration extends Component {
                             type="email"
                             name="userEmail"
                             value={userEmail}
+                            required
                             onChange={this.handleChange}
                         />
                     </label>
@@ -121,45 +124,49 @@ export class FormRegistration extends Component {
                             type="password"
                             name="userPassword"
                             value={userPassword}
+                            required
                             onChange={this.handleChange}
                         />
                     </label>
                     
-
+                    {/*//! Ваш досвід (радіокнопки) */}
                     <h3>Ваш досвід:</h3>
-                    <label>
-                        Учень
-                        <input
-                            type="radio"
-                            name="userExperience"
-                            value="disciple"
-                            checked={userExperience === "disciple"}
-                            onChange={this.handleChange}
-                        />
-                    </label>
+                    <div className={css.radioGroup}>
+                        <label>
+                            Учень
+                            <input
+                                type="radio"
+                                name="userExperience"
+                                value="disciple"
+                                checked={userExperience === "disciple"}
+                                onChange={this.handleChange}
+                            />
+                        </label>
 
-                    <label>
-                        Майстер
-                        <input
-                            type="radio"
-                            name="userExperience"
-                            value="master"
-                            checked={userExperience === "master"}
-                            onChange={this.handleChange}
-                        />
-                    </label>
+                        <label>
+                            Майстер
+                            <input
+                                type="radio"
+                                name="userExperience"
+                                value="master"
+                                checked={userExperience === "master"}
+                                onChange={this.handleChange}
+                            />
+                        </label>
 
-                    <label>
-                        Гуру
-                        <input
-                            type="radio"
-                            name="userExperience"
-                            value="guru"
-                            checked={userExperience === "guru"}
-                            onChange={this.handleChange}
-                        />
-                    </label>
-
+                        <label>
+                            Гуру
+                            <input
+                                type="radio"
+                                name="userExperience"
+                                value="guru"
+                                checked={userExperience === "guru"}
+                                onChange={this.handleChange}
+                            />
+                        </label>
+                    </div>
+                    
+                    {/*//! Ваш вік (select) */}
                     <h3>Ваш вік:</h3>
                     <label>
                         {/* Ваш вік */}
@@ -186,24 +193,27 @@ export class FormRegistration extends Component {
                         />
                     </label>
 
-                    <button
-                        className={css.loginButton}
-                        type="submit"
-                        disabled={!userLicence} //! блокування кнопки чекбоксом
-                    >
-                        Submit
-                    </button>
+                    {/*//! Кнопки Submit та Cancel */}
+                    <div className={css.buttonBox}>
+                        <button
+                            className={css.registrationButton}
+                            type="submit"
+                            disabled={!userLicence} //! блокування кнопки чекбоксом
+                        >
+                            Submit
+                        </button>
 
-                    <button
-                        className={css.loginButton}
-                        type="button"
-                        onClick={this.props.onClose}
-                    >
-                        Cancel
-                    </button>
+                        <button
+                            // className={css.registrationButton}
+                            className={`${css.registrationButton} ${css.cancelButton}`}
+                            type="button"
+                            onClick={this.props.onClose}
+                        >
+                            Cancel
+                        </button>
+                    </div >
                 </form>
             </>
-            
         );
     }
 };

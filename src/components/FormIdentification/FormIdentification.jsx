@@ -22,7 +22,7 @@ export class FormIdentification extends Component {
         const {  userEmail, userPassword } = this.state;
         
         // console.log(`✉️E-mail: ${userEmail},🈳Password: ${userPassword}`);
-        //! Перевірка на наявність userEmail
+        //! Перевірка на наявність userEmail (Ідентифікація)
         const users = JSON.parse(localStorage.getItem("users"));
         const isEmail = users.some(user => user.userEmail === userEmail);
         console.log("📩Такий Email є в db?:", isEmail); //!
@@ -33,7 +33,7 @@ export class FormIdentification extends Component {
             return;
         };
 
-        //! Перевірка Пароля
+        //! Перевірка Пароля (Аутентифікація)
         const user = users.find(user => user.userEmail === userEmail);
         console.log("🤷🏻‍♂️user:", user); //!
 
@@ -42,7 +42,7 @@ export class FormIdentification extends Component {
             console.log(`Введений неправильний пароль☹️☹️`);
             return;
         };
-        alert(`Ідентифікація/Аутентифікація пройдена ✅`);
+        alert(`Вітаю Вас, ${user.userName} 😊 \nІдентифікація/Аутентифікація пройдена ✅`);
         this.props.onAccountLogin({ ...this.state }); //! підняття стану + передача state в App.jsx
         this.reset();  //! очищуємо поля всіх інпутів
         this.props.onClose(); //todo: var.1 закриваємо модалку  
