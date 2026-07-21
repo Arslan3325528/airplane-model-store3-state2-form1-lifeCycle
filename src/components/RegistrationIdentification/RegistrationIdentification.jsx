@@ -9,11 +9,6 @@ export function RegistrationIdentification({
   activeUser, //! 🗣 активний (авторизований) користувач
   onSignOut, //! завершення сеансу облікового запису
 }) {
-  // console.log("onClose:", onClose);
-  // const signOut = () => {
-  //   console.log("signOut");
-  // };
-
 
   return (
     <div className={css.boxRegistrationIdentification}>
@@ -31,7 +26,6 @@ export function RegistrationIdentification({
 
         {!activeUser &&
           <button
-            // className={css.buttonRegistration}
             className={`${css.buttonRegistrationIdentification} ${css.buttonRegistration}`}
             type="button"
             // onClick={() => console.log('Клік в "Registration"')}
@@ -44,10 +38,9 @@ export function RegistrationIdentification({
 
         {!activeUser &&
           <button
-            // className={css.buttonIdentification}
             className={`${css.buttonRegistrationIdentification} ${css.buttonLogin}`}
             type="button"
-            // onClick={() => console.log('Клік в "Identification"')}
+            // onClick={() => console.log('Клік в "Login"')}
             onClick={onClose}
             // onClick={(event) => onClose(event.currentTarget.textContent)}
           >
@@ -57,7 +50,6 @@ export function RegistrationIdentification({
 
         {activeUser &&
           <button
-            // className={css.buttonRegistration}
             className={`${css.buttonRegistrationIdentification} ${css.buttonSignOut}`}
             type="button"
             onClick={onSignOut}

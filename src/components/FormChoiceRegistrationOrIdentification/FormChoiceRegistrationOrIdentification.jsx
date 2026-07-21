@@ -27,7 +27,6 @@ export function FormChoiceRegistrationOrIdentification({
         
         <button
           className={`${css.buttonRegistrationIdentification} ${css.buttonRegistration}`}
-            // className={css.buttonRegistration}
           type="button"
           // onClick={() => console.log('Клік в "Registration"')}
           onClick={onClose}

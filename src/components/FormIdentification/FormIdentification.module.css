@@ -55,7 +55,7 @@
     box-shadow: 0 0 0 4px rgba(0, 150, 136, .18);
 }
 
-/*! Розташування кнопок Submit та Cancel */
+/*! Розташування кнопок Login та Cancel */
 .buttonBoxFormIdentification {
     display: flex;
     justify-content: flex-end;
@@ -63,7 +63,7 @@
     margin-top: 15px;
 }
 
-/*! Кнопки Submit та Cancel */
+/*! Кнопки Login та Cancel */
 .buttonFormIdentification {
     padding: 14px;
     font-size: 17px;

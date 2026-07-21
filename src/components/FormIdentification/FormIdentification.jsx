@@ -107,12 +107,12 @@ export class FormIdentification extends Component {
                         />
                     </label>
                     
-                    {/*//! Кнопки Submit та Cancel */}
+                    {/*//! Кнопки Login та Cancel */}
                     <div className={css.buttonBoxFormIdentification}>
                         <button
                             className={`${css.buttonFormIdentification} ${css.loginButton}`}
                             type="submit"
-                            disabled={!userEmail && !userPassword} //! блокування кнопки 
+                            disabled={!userEmail && !userPassword} //! додаткове блокування кнопки Login
                         >
                             Login
                         </button>
