@@ -1,6 +1,5 @@
 /*! Заголовок форми h2 */
 .titleFormIdentification {
-    /* color: #630d0d; */
     color: #5e3e00;
     font-size: 30px;
     text-shadow:
@@ -92,7 +91,7 @@
     transform: translateY(0);
 }
 
-/*! Якщо кнопка блокован */
+/*! Якщо кнопка блокована */
 .buttonFormIdentification:disabled {
     background-color: #c8c8c8;
     cursor: not-allowed;

@@ -21,7 +21,7 @@ export function FormChoiceRegistrationOrIdentification({
       <h2 className={css.titleRegistrationIdentification}>для здійснення покупок</h2>
       <h2 className={css.titleRegistrationIdentification}>вам необхідно:</h2>
       <h2 className={`${css.titleRegistrationIdentification} ${css.titleRegistration}`}><u>пройти реєстрацію</u></h2>
-      <h2 className={css.titleRegistrationIdentification}>або</h2>
+      <h2 className={css.titleRegistrationIdentification}>та/або</h2>
       <h2 className={`${css.titleRegistrationIdentification} ${css.titleIdentification}`}><u>увійти до свого акаунту</u></h2>
       <div className={css.registrationIdentificationButtonBox}>
         

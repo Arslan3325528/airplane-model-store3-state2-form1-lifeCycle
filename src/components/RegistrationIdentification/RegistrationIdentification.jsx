@@ -16,21 +16,23 @@ export function RegistrationIdentification({
 
 
   return (
-    <div className={css.registrationIdentificationBox}>
-      {activeUser && <h2 className={css.buttonRegistration}>Вітаю вас, {activeUser.userName}</h2>}
-      <div className={css.registrationIdentificationButtonBox}>
-        {activeUser && <button
-          className={css.buttonRegistration}
-          type="button"
-          onClick={onSignOut}
-        >
-          SignOut
-        </button>
-        }
+    <div className={css.boxRegistrationIdentification}>
+      {activeUser 
+        ?
+        <h2 className={css.titleRegistrationIdentification}>
+          Вітаю вас, <span className={css.titleUserRegistrationIdentification}>{activeUser.userName}</span>
+        </h2>
+        :
+        <h2 className={`${css.titleRegistrationIdentification} ${css.titleReminderRegistrationIdentification}`}>
+          <i>Для здійснення покупок необхідно увійти до свого акаунту ⇒</i>
+        </h2>
+      }
+      <div className={css.buttonBoxRegistrationIdentification}>
 
         {!activeUser &&
           <button
-            className={css.buttonRegistration}
+            // className={css.buttonRegistration}
+            className={`${css.buttonRegistrationIdentification} ${css.buttonRegistration}`}
             type="button"
             // onClick={() => console.log('Клік в "Registration"')}
             onClick={onClose}
@@ -42,13 +44,25 @@ export function RegistrationIdentification({
 
         {!activeUser &&
           <button
-            className={css.buttonIdentification}
+            // className={css.buttonIdentification}
+            className={`${css.buttonRegistrationIdentification} ${css.buttonLogin}`}
             type="button"
             // onClick={() => console.log('Клік в "Identification"')}
             onClick={onClose}
             // onClick={(event) => onClose(event.currentTarget.textContent)}
           >
-            Identification
+            Login
+          </button>
+        }
+
+        {activeUser &&
+          <button
+            // className={css.buttonRegistration}
+            className={`${css.buttonRegistrationIdentification} ${css.buttonSignOut}`}
+            type="button"
+            onClick={onSignOut}
+          >
+            SignOut
           </button>
         }
 
