@@ -516,7 +516,7 @@ export class App extends Component {
   //! Відкриття/закриття модального вікна
   toggleModal = (event) => {
     console.log("🌀toggleModal:", event)
-    //! Перевірка: яка кнопка була натиснута - Registration або Identification або Backdrop або ESC(undefined)
+    //! Перевірка: яка кнопка була натиснута - Registration або Login або Backdrop або ESC(undefined)
     const modalType = 
       event
         ? event.currentTarget.textContent
@@ -528,7 +528,7 @@ export class App extends Component {
     //   showModal: !showModal,
     // }));
 
-    if (modalType === "Registration" || modalType === "Identification") {
+    if (modalType === "Registration" || modalType === "Login") {
       this.setState({
         showModal: true,
         modalType,
@@ -552,7 +552,7 @@ export class App extends Component {
     this.setState(prevState => ({
       // showModal: true,
       users: [...prevState.users, data],
-      modalType: "Identification",
+      modalType: "Login", //! для подальшого вікриття форми Ідентифікації/Аутентифікації (Login) користувача
     }));
   };
 
@@ -654,15 +654,15 @@ export class App extends Component {
 
     return (
       <>
-        {/*//!  Модалка Реєстрації та Ідентифікації/Аутентифікації користувача */}
+        {/*//!  Модалка Реєстрації та Ідентифікації/Аутентифікації (Login) користувача */}
         {/* {showModal && !activeUser &&} */}
         { showModal &&
           < ModalRegistrationIdentification
             onClose={this.toggleModal}
           >
             {/* <div>
-              <h1>Реєстрація та Ідентифікація/Аутентифікація</h1>
-              <p>Модалка Реєстрації та Ідентифікації/Аутентифікації користувача</p>
+              <h1>Реєстрація та Ідентифікації/Аутентифікації (Login)</h1>
+              <p>Модалка Реєстрації та Ідентифікації/Аутентифікації (Login) користувача</p>
               <div>
                 <button
                   type="button"
@@ -678,11 +678,11 @@ export class App extends Component {
                 </button>
               </div>
             </div> */}
-            {/*//!  Екран вибору Реєстрації або Ідентифікації/Аутентифікації користувача */}
+            {/*//!  Екран вибору Реєстрації або Ідентифікації/Аутентифікації (Login) користувача */}
             {!modalType &&
               <FormChoiceRegistrationOrIdentification
                 onClose={this.toggleModal}
-                onSubmit={this.submitForm}
+                // onSubmit={this.submitForm}
               />
             }
             {/*//!  Форма Реєстрації користувача */}
@@ -692,8 +692,8 @@ export class App extends Component {
                 onSubmit={this.submitForm}
               />
             }
-            {/*//!  Форма Ідентифікації/Аутентифікації користувача */}
-            {modalType === "Identification" &&
+            {/*//!  Форма Ідентифікації/Аутентифікації (Login) користувача */}
+            {modalType === "Login" &&
               <FormIdentification
                 onClose={this.toggleModal}
                 onAccountLogin={this.accountLogin}
@@ -702,7 +702,7 @@ export class App extends Component {
           </ModalRegistrationIdentification>
         }
         
-        {/*//!  Реєстрація та Ідентифікація/Аутентифікація користувача */}
+        {/*//!  Реєстрація та Ідентифікація/Аутентифікація (Login) користувача */}
         <RegistrationIdentification
           onClose={this.toggleModal} //! відкриття/закриття модального вікна
           activeUser={activeUser} //! 🗣 активний (авторизований) користувач
