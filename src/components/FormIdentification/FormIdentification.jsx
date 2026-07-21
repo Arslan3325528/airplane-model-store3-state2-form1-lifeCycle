@@ -76,54 +76,57 @@ export class FormIdentification extends Component {
 
         return (
             <>
-                <h2 className={css.IdentificationFormTitle}>Ідентифікація/Аутентифікація</h2>
+                <h2 className={css.titleFormIdentification}>Ідентифікація/Аутентифікація</h2>
                 <form
-                    className={css.loginForm}
+                    className={css.formIdentification}
                     onSubmit={this.handleSubmit}
                 >
-
-                    <label className={css.loginFormLabel}>
+                    {/*//! E-mail, Пароль (input) */}
+                    <label className={css.labelFormIdentification}>
                         E-mail:
                         <input
-                            className={css.loginFormInput}
+                            className={css.inputFormIdentification}
                             type="email"
                             name="userEmail"
                             value={userEmail}
+                            required
                             onChange={this.handleChange}
                         />
                     </label>
                     
 
-                    <label className={css.loginFormLabel}>
+                    <label className={css.labelFormIdentification}>
                         Пароль:
                         <input
-                            className={css.loginFormInput}
+                            className={css.inputFormIdentification}
                             type="password"
                             name="userPassword"
                             value={userPassword}
+                            required
                             onChange={this.handleChange}
                         />
                     </label>
                     
-                    <button
-                        className={css.loginButton}
-                        type="submit"
-                        // disabled={!userLicence} //! блокування кнопки чекбоксом
-                    >
-                        Login
-                    </button>
+                    {/*//! Кнопки Submit та Cancel */}
+                    <div className={css.buttonBoxFormIdentification}>
+                        <button
+                            className={`${css.buttonFormIdentification} ${css.loginButton}`}
+                            type="submit"
+                            disabled={!userEmail && !userPassword} //! блокування кнопки 
+                        >
+                            Login
+                        </button>
 
-                    <button
-                        className={css.loginButton}
-                        type="button"
-                        onClick={this.props.onClose}
-                    >
-                        Cancel
-                    </button>
-                    
+                        <button
+                            className={`${css.buttonFormIdentification} ${css.cancelButton}`}
+                            type="button"
+                            onClick={this.props.onClose}
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </form>
             </>
-            
         );
     }
 };

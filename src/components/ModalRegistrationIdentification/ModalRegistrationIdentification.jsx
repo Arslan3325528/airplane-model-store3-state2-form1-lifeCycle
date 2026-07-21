@@ -26,7 +26,7 @@ export class ModalRegistrationIdentification extends Component {
 
   //! Для закриття модаки клавішею ESC 
   handleKeyDownESC = event => {
-    console.log("event.code:", event.code); //!
+    // console.log("event.code:", event.code); //!
     if (event.code === 'Escape') {
       // console.log("Натиснули ❌ESC, потрібно закрити модалку");
       this.props.onClose();

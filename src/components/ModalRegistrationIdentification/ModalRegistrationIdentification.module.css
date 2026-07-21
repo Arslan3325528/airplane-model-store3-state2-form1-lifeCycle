@@ -17,9 +17,10 @@
     top: 50%;
     left: 50%;
     width: 100%;
-    max-width: 800px;
-    min-height: 600px;
-    padding: 12px;
+    /* max-width: 800px; */
+    width: max-content;
+    min-height: 445px;
+    padding: 25px;
     transform: translate(-50%, -50%);
     background-color: #e9fff9;
     border-radius: 15px;
