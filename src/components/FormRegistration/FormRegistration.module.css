@@ -1,5 +1,5 @@
 /*! Заголовок форми h2 */
-.loginFormTitle {
+.titleFormRegistration {
     color: #0d5c63;
     font-size: 30px;
     text-shadow: 
@@ -10,7 +10,7 @@
 }
 
 /*! Форма */
-.loginForm {
+.formRegistration {
     width: 515px;
     max-width: 80%;
     margin: 0 auto 30px;
@@ -27,14 +27,14 @@
 }
 
 /*! Заголовки h3 */
-.loginForm h3 {
+.formRegistration h3 {
     margin: 10px 0 5px;
     font-size: 20px;
     color: #0d5c63;
 }
 
 /*! Label */
-.loginFormLabel {
+.labelFormRegistration {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -45,7 +45,7 @@
 }
 
 /*! Input */
-.loginFormInput {
+.inputFormRegistration {
     width: 100%;
     padding: 12px 15px;
     font-size: 16px;
@@ -57,7 +57,7 @@
 }
 
 /*! Фокус в Input */
-.loginFormInput:focus {
+.inputFormRegistration:focus {
     border-color: #009688;
     box-shadow: 0 0 0 4px rgba(0, 150, 136, .18);
 }
@@ -82,14 +82,14 @@ select:focus {
 }
 
 /*! Розташування радіо кнопок */
-.radioGroup {
+.radioGroupFormRegistration {
     display: flex;
     gap: 25px;
     flex-wrap: wrap;
 }
 
 /*! Радіо кнопки (label) */
-.loginForm label:has(input[type="radio"]) {
+.formRegistration label:has(input[type="radio"]) {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -114,7 +114,7 @@ input[type="checkbox"] {
 }
 
 /*! Кнопки Submit та Cancel */
-.registrationButton {
+.buttonFormRegistration {
     padding: 14px;
     font-size: 17px;
     font-weight: bold;
@@ -127,7 +127,7 @@ input[type="checkbox"] {
         transition: .25s;
 }
 
-.registrationButton:hover:not(:disabled) {
+.buttonFormRegistration:hover:not(:disabled) {
     transform: translateY(-2px);
     background-color: #00796b;
     /* box-shadow: 0 10px 20px rgba(0, 150, 136, .45); */
@@ -136,12 +136,12 @@ input[type="checkbox"] {
         0 8px 16px rgba(0, 0, 0, 0.9);
 }
 
-.registrationButton:active {
+.buttonFormRegistration:active {
     transform: translateY(0);
 }
 
 /*! Якщо немає згоди з умовами */
-.registrationButton:disabled {
+.buttonFormRegistration:disabled {
     background-color: #c8c8c8;
     cursor: not-allowed;
     box-shadow: none;
@@ -149,7 +149,7 @@ input[type="checkbox"] {
 }
 
 /*! Розташування кнопок Submit та Cancel */
-.buttonBox {
+.buttonBoxFormRegistration {
     display: flex;
     justify-content: flex-end;
     gap: 15px;
@@ -161,7 +161,7 @@ input[type="checkbox"] {
     background-color: #d32f2f;
 }
 
-.registrationButton.cancelButton:hover {
+.buttonFormRegistration.cancelButton:hover {
     background-color: #b71c1c;
 }
 

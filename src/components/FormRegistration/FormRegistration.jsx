@@ -86,16 +86,16 @@ export class FormRegistration extends Component {
 
         return (
             <>
-                <h2 className={css.loginFormTitle}>Реєстрація</h2>
+                <h2 className={css.titleFormRegistration}>Реєстрація</h2>
                 <form
-                    className={css.loginForm}
+                    className={css.formRegistration}
                     onSubmit={this.handleSubmit}
                 >
                     {/*//! Ім'я, E-mail, Пароль (input) */}
-                    <label className={css.loginFormLabel}>
+                    <label className={css.labelFormRegistration}>
                         Ім'я:
                         <input
-                            className={css.loginFormInput}
+                            className={css.inputFormRegistration}
                             type="text"
                             name="userName"
                             value={userName}
@@ -104,10 +104,10 @@ export class FormRegistration extends Component {
                         />
                     </label>
 
-                    <label className={css.loginFormLabel}>
+                    <label className={css.labelFormRegistration}>
                         E-mail:
                         <input
-                            className={css.loginFormInput}
+                            className={css.inputFormRegistration}
                             type="email"
                             name="userEmail"
                             value={userEmail}
@@ -117,10 +117,10 @@ export class FormRegistration extends Component {
                     </label>
                     
 
-                    <label className={css.loginFormLabel}>
+                    <label className={css.labelFormRegistration}>
                         Пароль:
                         <input
-                            className={css.loginFormInput}
+                            className={css.inputFormRegistration}
                             type="password"
                             name="userPassword"
                             value={userPassword}
@@ -131,7 +131,7 @@ export class FormRegistration extends Component {
                     
                     {/*//! Ваш досвід (радіокнопки) */}
                     <h3>Ваш досвід:</h3>
-                    <div className={css.radioGroup}>
+                    <div className={css.radioGroupFormRegistration}>
                         <label>
                             Учень
                             <input
@@ -194,9 +194,9 @@ export class FormRegistration extends Component {
                     </label>
 
                     {/*//! Кнопки Submit та Cancel */}
-                    <div className={css.buttonBox}>
+                    <div className={css.buttonBoxFormRegistration}>
                         <button
-                            className={css.registrationButton}
+                            className={`${css.buttonFormRegistration} ${css.registrationButton}`}
                             type="submit"
                             disabled={!userLicence} //! блокування кнопки чекбоксом
                         >
@@ -204,8 +204,7 @@ export class FormRegistration extends Component {
                         </button>
 
                         <button
-                            // className={css.registrationButton}
-                            className={`${css.registrationButton} ${css.cancelButton}`}
+                            className={`${css.buttonFormRegistration} ${css.cancelButton}`}
                             type="button"
                             onClick={this.props.onClose}
                         >

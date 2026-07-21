@@ -76,7 +76,7 @@ export class FormIdentification extends Component {
 
         return (
             <>
-                <h2>Ідентифікація/Аутентифікація</h2>
+                <h2 className={css.IdentificationFormTitle}>Ідентифікація/Аутентифікація</h2>
                 <form
                     className={css.loginForm}
                     onSubmit={this.handleSubmit}
