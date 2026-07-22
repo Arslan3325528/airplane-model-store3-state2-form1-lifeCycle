@@ -72,6 +72,7 @@ export class FormIdentification extends Component {
         console.log("-----------STATE FormIdentification-----------");
         console.log("🛅Значення userEmail:", userEmail);
         console.log("🛅Значення userPassword:", userPassword);
+        // console.log("!true || !false:", !true || !false);
         console.log("______________________________________________");
 
         return (
@@ -112,7 +113,8 @@ export class FormIdentification extends Component {
                         <button
                             className={`${css.buttonFormIdentification} ${css.loginButton}`}
                             type="submit"
-                            disabled={!userEmail && !userPassword} //! додаткове блокування кнопки Login
+                            disabled={!userEmail || !userPassword} //! додаткове блокування кнопки Login
+                            // disabled={!true || !true} 
                         >
                             Login
                         </button>
