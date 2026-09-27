@@ -82,28 +82,26 @@ export class App extends Component {
     // };
 
     //todo: users
-    const users = localStorage.getItem("users");
-    if (!users) { //! 1.Якщо є масив users
-      localStorage.setItem("users", JSON.stringify([]));
-    } else if (JSON.parse(users).length) { //! 2.Якщо масив users не пустий
-      // console.log("❗️❗️❗️JSON.parse(users).length:", JSON.parse(users).length); //!
-      const activeUser = JSON.parse(users).find(user => user.isActive === true);
-      console.log("componentDidMount🗣 Активний(авторизований) користувач:", activeUser); //!
-      // console.log("componentDidMount🗣 users:", users); //!
-      if (activeUser) { //! 3.Якщо в масиві users є активний користувач
-        // const activeUserId = users.findIndex(user => user.userEmail === activeUser.userEmail);
-        // console.log("componentDidMount🗣 activeUserId:", activeUserId); //!
+    const users = JSON.parse(localStorage.getItem("users"));
+    console.log("componentDidMount🗣_❗️users:", users); //!
+    if (!users) { 
+      localStorage.setItem("users", JSON.stringify([])); //! 1.Якщо НЕМАЄ масива users, сворюємо пустий [] в localStorage
+    } else if (users.length) { //! 2.Якщо масив users Є і він НЕ ПУСТИЙ
+      console.log("componentDidMount🗣_❗️❗️users.length:", users.length); //!
+      const activeUser = users.find(user => user.isActive === true); //! 2.1.Шукаємо Активного (авторизованого) користувача
+      console.log("componentDidMount🗣_❗️❗️❗️Активний(авторизований) користувач:", activeUser); //!
+      if (activeUser) { //! 3.Якщо в масиві users є активний користувач:
         this.setState({
           showModal: false,
           activeUser,
-          activeUserId: JSON.parse(users).findIndex(user => user.isActive === true),
+          activeUserId: users.findIndex(user => user.isActive === true),
           isCartButtonDisabled: false,
           indicesSelectedModels: JSON.parse(localStorage.getItem("indicesSelectedModels")) || [], //! масив індексів обраних моделей
           selectedModels:
             (JSON.parse(localStorage.getItem("indicesSelectedModels")) || [])
               .flatMap(id => aircrafts.filter((el) => id === el.id))
               .sort((a, b) => a.name.brief.localeCompare(b.name.brief)), //! масив обраних моделей
-        })
+        });
       };
     };
   };

@@ -66,7 +66,6 @@ export class FormIdentification extends Component {
         const {
             userEmail,
             userPassword,
-
         } = this.state;
 
         console.log("-----------STATE FormIdentification-----------");
