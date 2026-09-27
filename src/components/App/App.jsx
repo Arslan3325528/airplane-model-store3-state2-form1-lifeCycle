@@ -89,10 +89,14 @@ export class App extends Component {
       // console.log("❗️❗️❗️JSON.parse(users).length:", JSON.parse(users).length); //!
       const activeUser = JSON.parse(users).find(user => user.isActive === true);
       console.log("componentDidMount🗣 Активний(авторизований) користувач:", activeUser); //!
+      // console.log("componentDidMount🗣 users:", users); //!
       if (activeUser) { //! 3.Якщо в масиві users є активний користувач
+        // const activeUserId = users.findIndex(user => user.userEmail === activeUser.userEmail);
+        // console.log("componentDidMount🗣 activeUserId:", activeUserId); //!
         this.setState({
           showModal: false,
           activeUser,
+          activeUserId: JSON.parse(users).findIndex(user => user.isActive === true),
           isCartButtonDisabled: false,
           indicesSelectedModels: JSON.parse(localStorage.getItem("indicesSelectedModels")) || [], //! масив індексів обраних моделей
           selectedModels:
