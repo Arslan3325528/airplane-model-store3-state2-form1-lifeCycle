@@ -1,9 +1,10 @@
+/* todo: var.2  Підключення Normalize (npm i -D postcss-normalize + postcss.config.js) */
 @import-normalize;
 
+/*! Reset CSS */
 * {
   box-sizing: border-box;
 }
-
 
 body {
   margin: 0;
@@ -56,4 +57,4 @@ button {
   border: none;
   cursor: pointer;
   background: transparent;
-}  
+} 
