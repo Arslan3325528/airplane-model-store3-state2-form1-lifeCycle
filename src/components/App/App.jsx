@@ -126,7 +126,8 @@ export class App extends Component {
         users: prevState.users.map((user, index) =>
           index === this.state.activeUserId
           ? { ...this.state.activeUser, indicesSelectedModels: this.state.indicesSelectedModels }
-          : user)
+          : user
+        )
       });
     };
 
