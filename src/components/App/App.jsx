@@ -509,7 +509,7 @@ export class App extends Component {
   // };
 
   //! Функція яка отримує масив моделей обраного масштабу з компоненту ScaleSelection та додає його в state
-  getModelsSelectedScale = (modelsScale, value) => {
+  getModelsSelectedScale = (modelsScale, scale) => {
     // console.log("📗Масив моделей обраного масштабу :", modelsScale);
 
     //! Умови за допомогою switch, які відобрадають стан кнопок-фільтрів
@@ -536,7 +536,7 @@ export class App extends Component {
       aircraftsArr: result,
       aircraftsArrAfterFiltration: result,
       inputSearchValue: "", //! значення inputSearch
-      modelScale: value, //! початковий масштаб моделі в ScaleSelection
+      modelScale: scale, //! початковий масштаб моделі в ScaleSelection
     });
   };
 
