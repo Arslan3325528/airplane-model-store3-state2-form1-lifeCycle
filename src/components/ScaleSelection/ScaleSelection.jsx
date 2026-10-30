@@ -14,7 +14,7 @@ export class ScaleSelection extends Component {
     // modelsSelectedScale: [] //! масив моделей обраного масштабу
   };
 
-  //! 🔄 Для пепререндеру
+  //! 🔄 Для перерендеру
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.modelScale !== this.props.modelScale) {
       this.setState({
@@ -51,7 +51,7 @@ export class ScaleSelection extends Component {
       // modelsSelectedScale,
     });
 
-    onGetModelsSelectedScale(modelsSelectedScale); //! підняття стану + передача modelsSelectedScale в App.jsx
+    onGetModelsSelectedScale(modelsSelectedScale, value); //! підняття стану + передача modelsSelectedScale та value в App.jsx
   }
 
   render() {
